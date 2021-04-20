@@ -4,11 +4,13 @@ import classNames from 'classnames';
 
 import './index.css';
 
-const AddUnitForm = ({ stylization }) => (
+const AddUnitForm = ({ stylization, onClose }) => (
   <form className={classNames('add-unit-form', stylization)}>
     <div className="form-title">
       <span className="title">Добавление нового БпЛА</span>
-      <i className="fa fa-times close-button" aria-hidden="true"></i>
+      <button className="close-button" type="button" onClick={onClose}>
+        <i className="fa fa-times" aria-hidden="true"></i>
+      </button>
     </div>
     <ul className="inputs-list">
       <li className="form-input">
@@ -39,11 +41,13 @@ const AddUnitForm = ({ stylization }) => (
 );
 
 AddUnitForm.propTypes = {
-  stylization: PropTypes.string
+  stylization: PropTypes.string,
+  onClose: PropTypes.func
 };
 
 AddUnitForm.defaultProps = {
-  stylization: ''
+  stylization: '',
+  onClose: () => {}
 };
 
 export default AddUnitForm;

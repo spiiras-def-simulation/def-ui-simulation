@@ -45,6 +45,7 @@ const SimulationControl = ({ position, stylization }) => {
                 label="Загрузить карту местности"
                 activeControl={activeControl}
                 onChoose={pushControl}
+                onClose={closeControl}
                 stylization="control"
               >
                 <AddMapForm stylization="control-form modal-theme" onClose={closeControl} />
@@ -61,6 +62,7 @@ const SimulationControl = ({ position, stylization }) => {
                 label="Добавить новый тип БпЛА"
                 activeControl={activeControl}
                 onChoose={pushControl}
+                onClose={closeControl}
                 stylization="control"
               >
                 <AddUnitTypeForm stylization="control-form modal-theme" onClose={closeControl} />
@@ -70,6 +72,7 @@ const SimulationControl = ({ position, stylization }) => {
                 label="Добавить новый БпЛА"
                 activeControl={activeControl}
                 onChoose={pushControl}
+                onClose={closeControl}
                 stylization="control"
               >
                 <AddUnitForm stylization="control-form modal-theme" onClose={closeControl} />

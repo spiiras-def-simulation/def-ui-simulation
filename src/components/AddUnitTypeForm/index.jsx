@@ -5,11 +5,13 @@ import Range from 'react-input-range';
 
 import './index.css';
 
-const AddUnitTypeForm = ({ stylization }) => (
+const AddUnitTypeForm = ({ stylization, onClose }) => (
   <form className={classNames('add-unit-type-form', stylization)}>
     <div className="form-title">
       <span className="title">Добавление нового типа БпЛА</span>
-      <i className="fa fa-times close-button" aria-hidden="true"></i>
+      <button className="close-button" type="button" onClick={onClose}>
+        <i className="fa fa-times" aria-hidden="true"></i>
+      </button>
     </div>
     <ul className="inputs-list">
       <li className="form-input">
@@ -50,11 +52,13 @@ const AddUnitTypeForm = ({ stylization }) => (
 );
 
 AddUnitTypeForm.propTypes = {
-  stylization: PropTypes.string
+  stylization: PropTypes.string,
+  onClose: PropTypes.func
 };
 
 AddUnitTypeForm.defaultProps = {
-  stylization: ''
+  stylization: '',
+  onClose: () => {}
 };
 
 export default AddUnitTypeForm;
