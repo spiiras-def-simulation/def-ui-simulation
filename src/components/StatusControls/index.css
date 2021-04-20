@@ -1,0 +1,17 @@
+.status-controls {
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+}
+
+.status-controls .status-panel {
+  max-height: fit-content;
+  font-size: 13px;
+  width: 310px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.status-controls .status-panel:last-of-type {
+  margin-bottom: 0;
+}

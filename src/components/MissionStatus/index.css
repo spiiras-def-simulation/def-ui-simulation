@@ -1,0 +1,70 @@
+.mission-status {
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-status .content-row {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.mission-status .mission-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px solid grey;
+}
+
+.mission-status .mission-title .title {
+  margin-right: 10px;
+}
+
+.mission-status .show-button {
+  color: blue;
+}
+
+.mission-status .show-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.mission-status .mission-title .close-button {
+  margin-left: auto;
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.mission-status .mission-title .close-button:hover {
+  cursor: pointer;
+}
+
+.mission-status .mission-stages {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.mission-stages {
+  overflow: auto;
+}
+
+.mission-stages .stage-row {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px solid grey;
+}
+
+.mission-stages .stage-row:last-of-type {
+  border-bottom: none;
+}
+
+.mission-stages .stage-row span {
+  margin-right: auto;
+}

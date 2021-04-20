@@ -1,0 +1,12 @@
+.weather-status {
+  display: flex;
+  font-size: 13px;
+}
+
+.weather-status .weather-status-element {
+  margin-right: 10px;
+}
+
+.weather-status .weather-status-element:last-of-type {
+  margin-right: 0;
+}

@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import L from 'leaflet';
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
 
-// import LayerRobots from '../LayerRobots';
-// import RobotsInformation from '../RobotsInformation';
-
 // import createMapConfiguration from './projection';
 
 import './index.css';
 
-const Map = ({ config: { mapCenter } }) => {
+const ViewMap = ({ config: { mapCenter }, children }) => {
   // const mapBounds = useMemo(
   //   () =>
   //     height && width
@@ -32,19 +29,22 @@ const Map = ({ config: { mapCenter } }) => {
       useFlyTo
     >
       <TileLayer url="http://localhost:5310/{z}/{y}/{x}.jpg" />
-      {/* <ImageOverlay url={`http://${window.location.host}/mapImage`} bounds={mapBounds} /> */}
-      {/* <RobotsInformation position="topleft" /> */}
-      {/* <LayerRobots /> */}
+      {children}
     </LeafletMap>
   );
 };
 
-Map.propTypes = {
+ViewMap.propTypes = {
   config: PropTypes.shape({
     width: PropTypes.number,
     height: PropTypes.number,
     mapCenter: PropTypes.arrayOf(PropTypes.number)
-  }).isRequired
+  }).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element])
 };
 
-export default Map;
+ViewMap.defaultProps = {
+  children: null
+};
+
+export default ViewMap;

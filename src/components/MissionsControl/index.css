@@ -1,0 +1,35 @@
+.missions-control {
+  font-size: 13px;
+  width: 240px;
+  background-color: white;
+}
+
+.missions-control .control-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-shadow: 0 1px 0 rgb(128, 128, 128);
+}
+
+.missions-control .control-title .title {
+  flex-grow: 1;
+}
+
+.missions-control .control-title .close-button {
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.missions-control .control-title .close-button:hover {
+  cursor: pointer;
+}
+
+.missions-control .mission-description {
+  box-shadow: 0 1px 0 rgb(128, 128, 128);
+}
+
+.missions-control .mission-description:last-child {
+  box-shadow: none;
+}
