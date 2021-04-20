@@ -1,0 +1,69 @@
+.simulation-control {
+  width: 280px;
+  max-height: calc(100vh - 80px);
+  font-size: 13px;
+}
+
+.simulation-control .control-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px solid grey;
+}
+
+.simulation-control .control-title .title {
+  flex-grow: 1;
+}
+
+.simulation-control .control-title .close-button {
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.simulation-control .control-title .close-button:hover {
+  cursor: pointer;
+}
+
+.simulation-control .state-controls {
+  padding: 4px 6px 4px 10px;
+}
+
+.state-controls .controls-block {
+  display: flex;
+}
+
+.state-controls .controls-block:last-of-type {
+  border-bottom: none;
+}
+
+.state-controls .controls-block .block-icon {
+  margin-right: 8px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: top;
+}
+
+.state-controls .controls-block .block-icon i {
+  color: #7f7f7f;
+}
+
+.state-controls .controls-block .controls-list {
+  flex-grow: 1;
+}
+
+.state-controls .controls-block .controls-list .control {
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.simulation-control .control .control-form {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 16px);
+}

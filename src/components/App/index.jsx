@@ -1,19 +1,28 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import AppHeader from '../AppHeader';
-import MapPage from '../MapPage';
+import ViewPage from '../ViewPage';
+import AppFooter from '../AppFooter';
 
 import './index.css';
 
 const App = () => (
-  <div className="map-application">
-    <AppHeader stylization="map-aplication-header" />
-    <div className="map-application-content">
-      <div className="content-container">
-        <MapPage />
+  <Router>
+    <div className="map-application">
+      <AppHeader stylization="map-aplication-header" />
+      <div className="map-application-content">
+        <div className="content-container">
+          <Switch>
+            <Route path="/operation">
+              <ViewPage />
+            </Route>
+          </Switch>
+        </div>
       </div>
+      <AppFooter stylization="map-application-footer" />
     </div>
-  </div>
+  </Router>
 );
 
 export default App;

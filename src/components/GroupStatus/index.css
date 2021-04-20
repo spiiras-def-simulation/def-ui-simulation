@@ -1,0 +1,67 @@
+.group-status {
+  display: flex;
+  flex-direction: column;
+}
+
+.group-status .show-button {
+  color: blue;
+}
+
+.group-status .show-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.group-status .group-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px solid grey;
+}
+
+.group-status .group-title .close-button {
+  margin-left: auto;
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.group-status .group-title .close-button:hover {
+  cursor: pointer;
+}
+
+.group-status .group-description p {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.group-status .group-description p span {
+  margin-right: 10px;
+}
+
+.group-status .group-vehicles {
+  overflow: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.group-vehicles .vehicle-record {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px solid grey;
+}
+
+.group-vehicles .vehicle-record:last-of-type {
+  border-bottom: none;
+}
+
+.group-vehicles .vehicle-record span {
+  margin-right: auto;
+}
