@@ -7,11 +7,24 @@ import StateControl from '../StateControl';
 import AddMapForm from '../AddMapForm';
 import AddUnitTypeForm from '../AddUnitTypeForm';
 import AddUnitForm from '../AddUnitForm';
+import ShowUnitsList from '../ShowUnitsList';
+import AddGroundTargetForm from '../AddGroundTargetForm';
+import ShowGroundTargetsList from '../ShowGroundTargetsList';
+import ShowMissionsList from '../ShowMissionsList';
 
 import 'react-input-range/lib/css/index.css';
 import './index.css';
 
-const Controls = { ADD_MAP: 'addMap', ADD_UNIT: 'addUnit', ADD_UNIT_TYPE: 'addUnitType' };
+const Controls = {
+  ADD_MAP: 'addMap',
+  ADD_UNIT: 'addUnit',
+  ADD_UNIT_TYPE: 'addUnitType',
+  SHOW_UNITS_LIST: 'showUnitsList',
+  ADD_GROUND_TARGET: 'addGroundTarget',
+  SHOW_GROUND_TARGETS_LIST: 'showGroundTargetsList',
+  ADD_MISSION: 'addMission',
+  SHOW_MISSIONS_LIST: 'showMissionsList'
+};
 
 const SimulationControl = ({ position, stylization }) => {
   const [activeControl, setActiveControl] = useState(null);
@@ -48,7 +61,7 @@ const SimulationControl = ({ position, stylization }) => {
                 onClose={closeControl}
                 stylization="control"
               >
-                <AddMapForm stylization="control-form modal-theme" onClose={closeControl} />
+                <AddMapForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
             </div>
           </div>
@@ -65,7 +78,7 @@ const SimulationControl = ({ position, stylization }) => {
                 onClose={closeControl}
                 stylization="control"
               >
-                <AddUnitTypeForm stylization="control-form modal-theme" onClose={closeControl} />
+                <AddUnitTypeForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
               <StateControl
                 name={Controls.ADD_UNIT}
@@ -75,11 +88,51 @@ const SimulationControl = ({ position, stylization }) => {
                 onClose={closeControl}
                 stylization="control"
               >
-                <AddUnitForm stylization="control-form modal-theme" onClose={closeControl} />
+                <AddUnitForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
-              <div className="control">
-                <span>Список БпЛА</span>
-              </div>
+              <StateControl
+                name={Controls.SHOW_UNITS_LIST}
+                label="Список БпЛА"
+                activeControl={activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
+                stylization="control"
+              >
+                <ShowUnitsList stylization="control-panel modal-theme" onClose={closeControl} />
+              </StateControl>
+            </div>
+          </div>
+          <div className="controls-block">
+            <div className="block-icon">
+              <i className="fas fa-truck-pickup" />
+            </div>
+            <div className="controls-list">
+              <StateControl
+                name={Controls.ADD_GROUND_TARGET}
+                label="Добавить наземную цель"
+                activeControl={activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
+                stylization="control"
+              >
+                <AddGroundTargetForm
+                  stylization="control-panel modal-theme"
+                  onClose={closeControl}
+                />
+              </StateControl>
+              <StateControl
+                name={Controls.SHOW_GROUND_TARGETS_LIST}
+                label="Список наземных целей"
+                activeControl={activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
+                stylization="control"
+              >
+                <ShowGroundTargetsList
+                  stylization="control-panel modal-theme"
+                  onClose={closeControl}
+                />
+              </StateControl>
             </div>
           </div>
           <div className="controls-block">
@@ -87,12 +140,24 @@ const SimulationControl = ({ position, stylization }) => {
               <i className="fas fa-flag" />
             </div>
             <div className="controls-list">
-              <div className="control">
-                <span>Добавить боевую миссию</span>
-              </div>
-              <div className="control">
-                <span>Список боевых миссий</span>
-              </div>
+              <StateControl
+                name={Controls.ADD_MISSION}
+                label="Добавить боевую миссию"
+                activeControl={activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
+                stylization="control"
+              />
+              <StateControl
+                name={Controls.SHOW_MISSIONS_LIST}
+                label="Список боевых задач"
+                activeControl={activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
+                stylization="control"
+              >
+                <ShowMissionsList stylization="control-panel modal-theme" onClose={closeControl} />
+              </StateControl>
             </div>
           </div>
         </div>

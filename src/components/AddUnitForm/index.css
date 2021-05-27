@@ -1,5 +1,5 @@
 .add-unit-form {
-  width: 320px;
+  width: 260px;
   display: flex;
   flex-direction: column;
 }
@@ -36,12 +36,12 @@
 
 .add-unit-form .inputs-list .form-input input[type='text'] {
   height: 26px;
-  width: 80%;
+  width: 100%;
 }
 
 .add-unit-form .inputs-list .form-input select {
   height: 26px;
-  width: 80%;
+  width: 100%;
   outline: none;
 }
 

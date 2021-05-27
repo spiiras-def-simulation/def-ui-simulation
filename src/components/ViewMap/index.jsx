@@ -24,6 +24,7 @@ const ViewMap = ({ config: { mapCenter }, children }) => {
       id="root-map"
       center={mapCenter}
       zoom={0}
+      maxZoom={0}
       crs={L.CRS.Simple}
       zoomControl={false}
       useFlyTo

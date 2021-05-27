@@ -1,10 +1,10 @@
-.add-map-form {
+.add-ground-target-form {
   width: 260px;
   display: flex;
   flex-direction: column;
 }
 
-.add-map-form .form-title {
+.add-ground-target-form .form-title {
   display: flex;
   align-items: center;
   height: 30px;
@@ -14,43 +14,43 @@
   border-bottom: 1px solid grey;
 }
 
-.add-map-form .form-title .title {
+.add-ground-target-form .form-title .title {
   flex-grow: 1;
 }
 
-.add-map-form .form-title .close-button {
+.add-ground-target-form .form-title .close-button {
   font-size: 14px;
   color: #7f7f7f;
 }
 
-.add-map-form .form-title .close-button:hover {
+.add-ground-target-form .form-title .close-button:hover {
   cursor: pointer;
 }
 
-.add-map-form .inputs-list .form-input {
+.add-ground-target-form .inputs-list .form-input {
   font-size: 11px;
   padding-left: 14px;
   padding-right: 14px;
   margin-bottom: 6px;
 }
 
-.add-map-form .inputs-list .form-input input[type='text'] {
+.add-ground-target-form .inputs-list .form-input input[type='text'] {
   height: 26px;
   width: 100%;
 }
 
-.add-map-form .form-buttons {
+.add-ground-target-form .form-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 6px;
 }
 
-.add-map-form .form-buttons button:hover {
+.add-ground-target-form .form-buttons button:hover {
   cursor: pointer;
 }
 
-.add-map-form .form-buttons .form-submit {
+.add-ground-target-form .form-buttons .form-submit {
   width: 90px;
   height: 26px;
   padding: 2px;

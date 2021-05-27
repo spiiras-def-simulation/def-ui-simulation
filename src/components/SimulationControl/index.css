@@ -1,5 +1,5 @@
 .simulation-control {
-  width: 280px;
+  width: 260px;
   max-height: calc(100vh - 80px);
   font-size: 13px;
 }
@@ -61,7 +61,7 @@
   height: 30px;
 }
 
-.simulation-control .control .control-form {
+.simulation-control .control .control-panel {
   z-index: 100;
   position: absolute;
   top: 0;

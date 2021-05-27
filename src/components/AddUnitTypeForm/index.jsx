@@ -8,7 +8,7 @@ import './index.css';
 const AddUnitTypeForm = ({ stylization, onClose }) => (
   <form className={classNames('add-unit-type-form', stylization)}>
     <div className="form-title">
-      <span className="title">Добавление нового типа БпЛА</span>
+      <span className="title">Создание нового типа БпЛА</span>
       <button className="close-button" type="button" onClick={onClose}>
         <i className="fa fa-times" aria-hidden="true"></i>
       </button>

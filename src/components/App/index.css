@@ -212,3 +212,7 @@ q:after {
 .map-application .badge:hover {
   cursor: pointer;
 }
+
+.leaflet-control {
+  min-height: 26px;
+}

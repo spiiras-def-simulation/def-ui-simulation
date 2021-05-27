@@ -1,0 +1,99 @@
+.events-timeline {
+  position: relative;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.events-timeline .add-event-button {
+  position: absolute;
+  top: 0;
+  left: -26px;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 100%;
+  background-color: white;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.35);
+}
+
+.events-timeline .add-event-button:hover {
+  cursor: pointer;
+}
+
+.events-timeline .add-event-button i {
+  font-size: 14px;
+  color: #555555;
+}
+
+.events-timeline .timeline-panel {
+  width: 16px;
+  height: 560px;
+  padding-top: 2px;
+  padding-bottom: 14px;
+  border-radius: 7px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.5);
+}
+
+.events-timeline .timeline-panel:hover {
+  cursor: pointer;
+}
+
+.events-timeline .timeline-panel .timeline-events {
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  box-shadow: 0px 1px 1px rgb(0, 0, 0, 0.5);
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event span {
+  font-size: 8px;
+  font-weight: bold;
+  color: white;
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event.event-current-time {
+  background-color: grey;
+  border: 3px solid grey;
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event.event-weather {
+  background-color: #8400ff;
+  border: 3px solid #8400ff;
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event.event-interval {
+  background-color: #03b915;
+  border: 3px solid #03b915;
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event.event-ground-targets {
+  background-color: red;
+  border: 3px solid red;
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event.event-untis {
+  background-color: blue;
+  border: 3px solid blue;
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event.event-mission {
+  background-color: palevioletred;
+  border: 3px solid palevioletred;
+}
+
+.events-timeline .timeline-panel .timeline-events .timeline-event:hover {
+  background-color: white;
+}
