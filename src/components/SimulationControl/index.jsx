@@ -4,26 +4,23 @@ import classNames from 'classnames';
 import Control from 'react-leaflet-control';
 
 import StateControl from '../StateControl';
-import AddMapForm from '../AddMapForm';
 import AddUnitTypeForm from '../AddUnitTypeForm';
 import AddUnitForm from '../AddUnitForm';
 import ShowUnitsList from '../ShowUnitsList';
 import AddGroundTargetForm from '../AddGroundTargetForm';
 import ShowGroundTargetsList from '../ShowGroundTargetsList';
-import ShowMissionsList from '../ShowMissionsList';
 
 import 'react-input-range/lib/css/index.css';
 import './index.css';
 
 const Controls = {
-  ADD_MAP: 'addMap',
   ADD_UNIT: 'addUnit',
   ADD_UNIT_TYPE: 'addUnitType',
   SHOW_UNITS_LIST: 'showUnitsList',
   ADD_GROUND_TARGET: 'addGroundTarget',
   SHOW_GROUND_TARGETS_LIST: 'showGroundTargetsList',
-  ADD_MISSION: 'addMission',
-  SHOW_MISSIONS_LIST: 'showMissionsList'
+  INPUT_LOCATION: 'inputLocation',
+  INPUT_MISSION: 'inputMission'
 };
 
 const SimulationControl = ({ position, stylization }) => {
@@ -48,23 +45,6 @@ const SimulationControl = ({ position, stylization }) => {
           <i className="fa fa-times close-button" aria-hidden="true"></i>
         </div>
         <div className="state-controls">
-          <div className="controls-block">
-            <div className="block-icon">
-              <i className="fas fa-map" />
-            </div>
-            <div className="controls-list">
-              <StateControl
-                name={Controls.ADD_MAP}
-                label="Загрузить карту местности"
-                activeControl={activeControl}
-                onChoose={pushControl}
-                onClose={closeControl}
-                stylization="control"
-              >
-                <AddMapForm stylization="control-panel modal-theme" onClose={closeControl} />
-              </StateControl>
-            </div>
-          </div>
           <div className="controls-block">
             <div className="block-icon">
               <i className="fas fa-plane" />
@@ -137,27 +117,32 @@ const SimulationControl = ({ position, stylization }) => {
           </div>
           <div className="controls-block">
             <div className="block-icon">
-              <i className="fas fa-flag" />
+              <i className="fas fa-map" />
             </div>
             <div className="controls-list">
               <StateControl
-                name={Controls.ADD_MISSION}
-                label="Добавить боевую миссию"
+                name={Controls.INPUT_LOCATION}
+                label="Ввод параметров местности"
                 activeControl={activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
               />
+            </div>
+          </div>
+          <div className="controls-block">
+            <div className="block-icon">
+              <i className="fas fa-flag" />
+            </div>
+            <div className="controls-list">
               <StateControl
-                name={Controls.SHOW_MISSIONS_LIST}
-                label="Список боевых задач"
+                name={Controls.INPUT_MISSION}
+                label="Ввод боевого задания"
                 activeControl={activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
-              >
-                <ShowMissionsList stylization="control-panel modal-theme" onClose={closeControl} />
-              </StateControl>
+              />
             </div>
           </div>
         </div>

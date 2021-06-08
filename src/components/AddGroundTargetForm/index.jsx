@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import PrimaryButton from '../PrimaryButton';
+
 import './index.css';
 
 const AddGroundTargetForm = ({ stylization, onClose }) => (
@@ -19,9 +21,7 @@ const AddGroundTargetForm = ({ stylization, onClose }) => (
       </li>
     </ul>
     <div className="form-buttons">
-      <button className="form-submit" type="button">
-        Добавить
-      </button>
+      <PrimaryButton stylization="form-submit-button primary-button">Добавить</PrimaryButton>
     </div>
   </form>
 );

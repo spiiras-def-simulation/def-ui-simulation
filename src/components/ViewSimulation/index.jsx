@@ -8,7 +8,7 @@ import EventsTimeline from '../EventsTimeline';
 
 const ViewSimulation = () => {
   return (
-    <ViewMap config={{ mapCenter: [-1500, 1500] }}>
+    <ViewMap>
       <SimulationControl stylization="modal-theme" />
       <DateStatus position="topright" />
       <WeatherStatus position="topright" />

@@ -8,7 +8,7 @@ import StatusControls from '../StatusControls';
 
 const ViewOperation = () => {
   return (
-    <ViewMap config={{ mapCenter: [-1500, 1500] }}>
+    <ViewMap>
       <DateStatus position="topleft" />
       <WeatherStatus position="topleft" />
       <MissionsControl position="topleft" stylization="modal-theme" />

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Range from 'react-input-range';
 
+import PrimaryButton from '../PrimaryButton';
+
 import './index.css';
 
 const AddUnitTypeForm = ({ stylization, onClose }) => (
@@ -44,9 +46,7 @@ const AddUnitTypeForm = ({ stylization, onClose }) => (
       </li>
     </ul>
     <div className="form-buttons">
-      <button className="form-submit" type="button">
-        Добавить
-      </button>
+      <PrimaryButton stylization="form-submit-button">Добавить</PrimaryButton>
     </div>
   </form>
 );

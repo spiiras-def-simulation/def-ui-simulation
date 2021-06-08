@@ -7,7 +7,7 @@ import './index.css';
 const AddMapForm = ({ stylization, onClose }) => (
   <form className={classNames('add-map-form', stylization)}>
     <div className="form-title">
-      <span className="title">Добавление изображения местности</span>
+      <span className="title">Ввести расположение местности</span>
       <button className="close-button" type="button" onClick={onClose}>
         <i className="fa fa-times" aria-hidden="true"></i>
       </button>

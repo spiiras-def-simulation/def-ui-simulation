@@ -1,0 +1,22 @@
+.return-view-control {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.return-view-control:hover {
+  cursor: pointer;
+}
+
+.return-view-control span {
+  color: black;
+}
+
+.return-view-control i {
+  margin-right: 4px;
+  color: #7f7f7f;
+}

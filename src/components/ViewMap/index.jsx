@@ -1,46 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import L from 'leaflet';
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
-
-// import createMapConfiguration from './projection';
 
 import './index.css';
 
-const ViewMap = ({ config: { mapCenter }, children }) => {
-  // const mapBounds = useMemo(
-  //   () =>
-  //     height && width
-  //       ? [
-  //           [0, 0],
-  //           [height, width]
-  //         ]
-  //       : null,
-  //   [width, height]
-  // );
+const ViewMap = ({ children }) => {
+  const center = [0, 0];
+  const bounds = [
+    [59.96377573688943, 30.513410568237305],
+    [59.953978877271574, 30.53821563720703]
+  ];
 
   return (
     <LeafletMap
       id="root-map"
-      center={mapCenter}
+      center={center}
       zoom={0}
-      maxZoom={0}
-      crs={L.CRS.Simple}
       zoomControl={false}
-      useFlyTo
+      bounds={bounds}
+      maxBounds={bounds}
+      maxBoundsViscosity={1.0}
     >
-      <TileLayer url="http://localhost:5310/{z}/{y}/{x}.jpg" />
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {children}
     </LeafletMap>
   );
 };
 
 ViewMap.propTypes = {
-  config: PropTypes.shape({
-    width: PropTypes.number,
-    height: PropTypes.number,
-    mapCenter: PropTypes.arrayOf(PropTypes.number)
-  }).isRequired,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element])
 };
 

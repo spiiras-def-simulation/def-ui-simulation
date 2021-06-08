@@ -123,6 +123,13 @@ button {
   text-indent: 4px;
 }
 
+.map-application input[type='number'] {
+  outline: none;
+  font-size: 13px;
+  border: 1px solid #797979;
+  text-indent: 4px;
+}
+
 .map-application input[type='email'] {
   outline: none;
 }
@@ -146,7 +153,7 @@ section {
   display: block;
 }
 
-.map-application button,
+button,
 input[type='submit'] {
   border: none;
   font: inherit;

@@ -51,15 +51,6 @@
   margin-bottom: 6px;
 }
 
-.add-unit-type-form .form-buttons button:hover {
-  cursor: pointer;
-}
-
-.add-unit-type-form .form-buttons .form-submit {
+.add-unit-type-form .form-buttons .form-submit-button {
   width: 90px;
-  height: 26px;
-  padding: 2px;
-  color: white;
-  border-radius: 5px;
-  background-color: #8400ff;
 }
