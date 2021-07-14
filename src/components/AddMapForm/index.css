@@ -1,5 +1,5 @@
 .add-map-form {
-  width: 320px;
+  width: 260px;
   display: flex;
   flex-direction: column;
 }
@@ -36,18 +36,7 @@
 
 .add-map-form .inputs-list .form-input input[type='text'] {
   height: 26px;
-  width: 80%;
-}
-
-.add-map-form .inputs-list .form-input select {
-  height: 26px;
-  width: 80%;
-  outline: none;
-}
-
-.add-map-form .inputs-list .form-input .input-range {
-  margin-top: 16px;
-  margin-bottom: 22px;
+  width: 100%;
 }
 
 .add-map-form .form-buttons {

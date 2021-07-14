@@ -1,0 +1,73 @@
+.input-location-control {
+  max-height: calc(100vh - 80px);
+  font-size: 13px;
+}
+
+.input-location-control .form-controls {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.input-location-control .form-controls .state-controls {
+  padding-left: 8px;
+  padding-right: 6px;
+}
+
+.input-location-control .state-controls .controls-block {
+  margin-bottom: 2px;
+  display: flex;
+}
+
+.input-location-control .state-controls .controls-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.input-location-control .state-controls .controls-block:last-of-type {
+  border-bottom: none;
+}
+
+.input-location-control .controls-block .block-icon {
+  margin-right: 8px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: top;
+}
+
+.input-location-control .controls-block .block-icon i {
+  color: #7f7f7f;
+}
+
+.input-location-control .controls-block .controls-list {
+  flex-grow: 1;
+}
+
+.input-location-control .controls-block .controls-list .control {
+  position: relative;
+  margin-top: 2px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.input-location-control .controls-block .controls-list .control:first-of-type {
+  margin-top: 0;
+}
+
+.input-location-control .control .control-panel {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 16px);
+}
+
+.input-location-control .submit-controls {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-location-control .submit-controls .submit-controls-button {
+  width: 90px;
+}

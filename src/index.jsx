@@ -7,11 +7,13 @@ import registerServiceWorker from './registerServiceWorker';
 import client from './apollo';
 import App from './components/App';
 
+import '@fortawesome/fontawesome-free/css/all.css';
+
 render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>,
-  document.getElementById('interactiveMapRoot')
+  document.getElementById('appSimulation')
 );
 
 registerServiceWorker();

@@ -1,0 +1,51 @@
+.add-ground-target-form {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-ground-target-form .form-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid grey;
+}
+
+.add-ground-target-form .form-title .title {
+  flex-grow: 1;
+}
+
+.add-ground-target-form .form-title .close-button {
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.add-ground-target-form .form-title .close-button:hover {
+  cursor: pointer;
+}
+
+.add-ground-target-form .inputs-list .form-input {
+  font-size: 11px;
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-bottom: 6px;
+}
+
+.add-ground-target-form .inputs-list .form-input input[type='text'] {
+  height: 26px;
+  width: 100%;
+}
+
+.add-ground-target-form .form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.add-ground-target-form .form-buttons .form-submit-button {
+  width: 90px;
+}

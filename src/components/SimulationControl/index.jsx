@@ -4,14 +4,25 @@ import classNames from 'classnames';
 import Control from 'react-leaflet-control';
 
 import StateControl from '../StateControl';
-import AddMapForm from '../AddMapForm';
-import AddUnitTypeForm from '../AddUnitTypeForm';
+import RefControl from '../RefControl';
+import InputUnitTypeForm from '../InputUnitTypeForm';
 import AddUnitForm from '../AddUnitForm';
+import ShowUnitsList from '../ShowUnitsList';
+import SetLocationPosition from '../SetLocationPosition';
+import ShowGroundTargetsList from '../ShowGroundTargetsList';
 
-import 'react-input-range/lib/css/index.css';
 import './index.css';
 
-const Controls = { ADD_MAP: 'addMap', ADD_UNIT: 'addUnit', ADD_UNIT_TYPE: 'addUnitType' };
+const Controls = {
+  ADD_UNIT: 'addUnit',
+  ADD_UNIT_TYPE: 'addUnitType',
+  SHOW_UNITS_LIST: 'showUnitsList',
+  INPUT_GROUND_TARGETS: 'inputGroundTargets',
+  SHOW_GROUND_TARGETS_LIST: 'showGroundTargetsList',
+  SET_LOCATION_POSITION: 'setLocationPosition',
+  INPUT_LOCATION: 'inputLocation',
+  INPUT_MISSION: 'inputMission'
+};
 
 const SimulationControl = ({ position, stylization }) => {
   const [activeControl, setActiveControl] = useState(null);
@@ -37,49 +48,91 @@ const SimulationControl = ({ position, stylization }) => {
         <div className="state-controls">
           <div className="controls-block">
             <div className="block-icon">
-              <i className="fas fa-map" />
-            </div>
-            <div className="controls-list">
-              <StateControl
-                name={Controls.ADD_MAP}
-                label="Загрузить карту местности"
-                activeControl={activeControl}
-                onChoose={pushControl}
-                onClose={closeControl}
-                stylization="control"
-              >
-                <AddMapForm stylization="control-form modal-theme" onClose={closeControl} />
-              </StateControl>
-            </div>
-          </div>
-          <div className="controls-block">
-            <div className="block-icon">
               <i className="fas fa-plane" />
             </div>
             <div className="controls-list">
               <StateControl
                 name={Controls.ADD_UNIT_TYPE}
                 label="Добавить новый тип БпЛА"
-                activeControl={activeControl}
+                active={Controls.ADD_UNIT_TYPE === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
               >
-                <AddUnitTypeForm stylization="control-form modal-theme" onClose={closeControl} />
+                <InputUnitTypeForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
               <StateControl
                 name={Controls.ADD_UNIT}
                 label="Добавить новый БпЛА"
-                activeControl={activeControl}
+                active={Controls.ADD_UNIT === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
               >
-                <AddUnitForm stylization="control-form modal-theme" onClose={closeControl} />
+                <AddUnitForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
-              <div className="control">
-                <span>Список БпЛА</span>
-              </div>
+              <StateControl
+                name={Controls.SHOW_UNITS_LIST}
+                label="Список БпЛА"
+                active={Controls.SHOW_UNITS_LIST === activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
+                stylization="control"
+              >
+                <ShowUnitsList stylization="control-panel modal-theme" onClose={closeControl} />
+              </StateControl>
+            </div>
+          </div>
+          <div className="controls-block">
+            <div className="block-icon">
+              <i className="fas fa-truck-pickup" />
+            </div>
+            <div className="controls-list">
+              <RefControl
+                name={Controls.INPUT_GROUND_TARGETS}
+                label="Добавить наземные цели"
+                stylization="control"
+                reference="/operation/input/targets"
+              />
+              <StateControl
+                name={Controls.SHOW_GROUND_TARGETS_LIST}
+                label="Список наземных целей"
+                active={Controls.SHOW_GROUND_TARGETS_LIST === activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
+                stylization="control"
+              >
+                <ShowGroundTargetsList
+                  stylization="control-panel modal-theme"
+                  onClose={closeControl}
+                />
+              </StateControl>
+            </div>
+          </div>
+          <div className="controls-block">
+            <div className="block-icon">
+              <i className="fas fa-map" />
+            </div>
+            <div className="controls-list">
+              <StateControl
+                name={Controls.SET_LOCATION_POSITION}
+                label="Установить положение местности"
+                active={Controls.SET_LOCATION_POSITION === activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
+                stylization="control"
+              >
+                <SetLocationPosition
+                  stylization="control-panel modal-theme"
+                  onClose={closeControl}
+                />
+              </StateControl>
+              <RefControl
+                name={Controls.INPUT_LOCATION}
+                label="Ввод параметров местности"
+                stylization="control"
+                reference="/operation/input/location"
+              />
             </div>
           </div>
           <div className="controls-block">
@@ -87,12 +140,12 @@ const SimulationControl = ({ position, stylization }) => {
               <i className="fas fa-flag" />
             </div>
             <div className="controls-list">
-              <div className="control">
-                <span>Добавить боевую миссию</span>
-              </div>
-              <div className="control">
-                <span>Список боевых миссий</span>
-              </div>
+              <RefControl
+                name={Controls.INPUT_MISSION}
+                label="Ввод боевого задания"
+                stylization="control"
+                reference="/operation/input/mission"
+              />
             </div>
           </div>
         </div>

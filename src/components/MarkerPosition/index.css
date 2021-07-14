@@ -1,0 +1,10 @@
+.marker-position .marker-position-icon {
+  position: relative;
+  top: -7px;
+  left: -7px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  border: 1px solid white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}

@@ -24,33 +24,14 @@
 .user-status .user-status-button {
   width: 26px;
   height: 26px;
-  line-height: 26px;
   border-radius: 100%;
-  background-color: white;
-  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.35);
-}
-
-.user-status .user-status-button:hover {
-  cursor: pointer;
 }
 
 .user-status .user-status-button i {
-  font-size: 14px;
+  font-size: 13px;
   color: #555555;
 }
 
 .user-status .user-exit-button {
-  text-align: center;
-  padding-left: 6px;
-  padding-right: 6px;
-  height: 26px;
   width: 80px;
-  line-height: 26px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.35);
-}
-
-.user-status .user-exit-button:hover {
-  cursor: pointer;
 }
