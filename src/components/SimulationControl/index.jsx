@@ -4,21 +4,22 @@ import classNames from 'classnames';
 import Control from 'react-leaflet-control';
 
 import StateControl from '../StateControl';
-import AddUnitTypeForm from '../AddUnitTypeForm';
+import RefControl from '../RefControl';
+import InputUnitTypeForm from '../InputUnitTypeForm';
 import AddUnitForm from '../AddUnitForm';
 import ShowUnitsList from '../ShowUnitsList';
-import AddGroundTargetForm from '../AddGroundTargetForm';
+import SetLocationPosition from '../SetLocationPosition';
 import ShowGroundTargetsList from '../ShowGroundTargetsList';
 
-import 'react-input-range/lib/css/index.css';
 import './index.css';
 
 const Controls = {
   ADD_UNIT: 'addUnit',
   ADD_UNIT_TYPE: 'addUnitType',
   SHOW_UNITS_LIST: 'showUnitsList',
-  ADD_GROUND_TARGET: 'addGroundTarget',
+  INPUT_GROUND_TARGETS: 'inputGroundTargets',
   SHOW_GROUND_TARGETS_LIST: 'showGroundTargetsList',
+  SET_LOCATION_POSITION: 'setLocationPosition',
   INPUT_LOCATION: 'inputLocation',
   INPUT_MISSION: 'inputMission'
 };
@@ -53,17 +54,17 @@ const SimulationControl = ({ position, stylization }) => {
               <StateControl
                 name={Controls.ADD_UNIT_TYPE}
                 label="Добавить новый тип БпЛА"
-                activeControl={activeControl}
+                active={Controls.ADD_UNIT_TYPE === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
               >
-                <AddUnitTypeForm stylization="control-panel modal-theme" onClose={closeControl} />
+                <InputUnitTypeForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
               <StateControl
                 name={Controls.ADD_UNIT}
                 label="Добавить новый БпЛА"
-                activeControl={activeControl}
+                active={Controls.ADD_UNIT === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
@@ -73,7 +74,7 @@ const SimulationControl = ({ position, stylization }) => {
               <StateControl
                 name={Controls.SHOW_UNITS_LIST}
                 label="Список БпЛА"
-                activeControl={activeControl}
+                active={Controls.SHOW_UNITS_LIST === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
@@ -87,23 +88,16 @@ const SimulationControl = ({ position, stylization }) => {
               <i className="fas fa-truck-pickup" />
             </div>
             <div className="controls-list">
-              <StateControl
-                name={Controls.ADD_GROUND_TARGET}
-                label="Добавить наземную цель"
-                activeControl={activeControl}
-                onChoose={pushControl}
-                onClose={closeControl}
+              <RefControl
+                name={Controls.INPUT_GROUND_TARGETS}
+                label="Добавить наземные цели"
                 stylization="control"
-              >
-                <AddGroundTargetForm
-                  stylization="control-panel modal-theme"
-                  onClose={closeControl}
-                />
-              </StateControl>
+                reference="/operation/input/targets"
+              />
               <StateControl
                 name={Controls.SHOW_GROUND_TARGETS_LIST}
                 label="Список наземных целей"
-                activeControl={activeControl}
+                active={Controls.SHOW_GROUND_TARGETS_LIST === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
@@ -121,12 +115,23 @@ const SimulationControl = ({ position, stylization }) => {
             </div>
             <div className="controls-list">
               <StateControl
-                name={Controls.INPUT_LOCATION}
-                label="Ввод параметров местности"
-                activeControl={activeControl}
+                name={Controls.SET_LOCATION_POSITION}
+                label="Установить положение местности"
+                active={Controls.SET_LOCATION_POSITION === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
+              >
+                <SetLocationPosition
+                  stylization="control-panel modal-theme"
+                  onClose={closeControl}
+                />
+              </StateControl>
+              <RefControl
+                name={Controls.INPUT_LOCATION}
+                label="Ввод параметров местности"
+                stylization="control"
+                reference="/operation/input/location"
               />
             </div>
           </div>
@@ -135,13 +140,11 @@ const SimulationControl = ({ position, stylization }) => {
               <i className="fas fa-flag" />
             </div>
             <div className="controls-list">
-              <StateControl
+              <RefControl
                 name={Controls.INPUT_MISSION}
                 label="Ввод боевого задания"
-                activeControl={activeControl}
-                onChoose={pushControl}
-                onClose={closeControl}
                 stylization="control"
+                reference="/operation/input/mission"
               />
             </div>
           </div>

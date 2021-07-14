@@ -4,18 +4,17 @@ import classNames from 'classnames';
 
 import './index.css';
 
-const StateControl = ({ stylization, name, label, activeControl, onChoose, onClose, children }) => {
-  const isActive = name === activeControl;
+const StateControl = ({ stylization, name, label, active, onChoose, onClose, children }) => {
   return (
-    <div className={classNames('state-control', isActive && 'active', stylization)}>
+    <div className={classNames('state-control', active && 'active', stylization)}>
       <button
         className="control-button"
         type="button"
-        onClick={() => (isActive ? onClose() : onChoose(name))}
+        onClick={() => (active ? onClose() : onChoose(name))}
       >
         <span>{label}</span>
       </button>
-      {isActive && children}
+      {active && children}
     </div>
   );
 };
@@ -24,7 +23,7 @@ StateControl.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   stylization: PropTypes.string,
-  activeControl: PropTypes.string,
+  active: PropTypes.bool,
   onChoose: PropTypes.func,
   onClose: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
@@ -32,7 +31,7 @@ StateControl.propTypes = {
 
 StateControl.defaultProps = {
   stylization: '',
-  activeControl: null,
+  active: false,
   onChoose: () => {},
   onClose: () => {},
   children: null

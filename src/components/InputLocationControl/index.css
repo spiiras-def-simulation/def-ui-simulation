@@ -1,29 +1,6 @@
 .input-location-control {
-  width: 260px;
   max-height: calc(100vh - 80px);
   font-size: 13px;
-}
-
-.input-location-control .control-title {
-  display: flex;
-  align-items: center;
-  height: 30px;
-  padding-left: 8px;
-  padding-right: 8px;
-  border-bottom: 1px solid grey;
-}
-
-.input-location-control .control-title .title {
-  flex-grow: 1;
-}
-
-.input-location-control .control-title .close-button {
-  font-size: 14px;
-  color: #7f7f7f;
-}
-
-.input-location-control .control-title .close-button:hover {
-  cursor: pointer;
 }
 
 .input-location-control .form-controls {
@@ -49,22 +26,22 @@
   border-bottom: none;
 }
 
-.input-location-control .state-controls .controls-block .block-icon {
+.input-location-control .controls-block .block-icon {
   margin-right: 8px;
   height: 30px;
   line-height: 30px;
   vertical-align: top;
 }
 
-.input-location-control .state-controls .controls-block .block-icon i {
+.input-location-control .controls-block .block-icon i {
   color: #7f7f7f;
 }
 
-.input-location-control .state-controls .controls-block .controls-list {
+.input-location-control .controls-block .controls-list {
   flex-grow: 1;
 }
 
-.input-location-control .state-controls .controls-block .controls-list .control {
+.input-location-control .controls-block .controls-list .control {
   position: relative;
   margin-top: 2px;
   border-radius: 5px;
@@ -73,7 +50,7 @@
   height: 30px;
 }
 
-.input-location-control .state-controls .controls-block .controls-list .control:first-of-type {
+.input-location-control .controls-block .controls-list .control:first-of-type {
   margin-top: 0;
 }
 

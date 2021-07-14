@@ -1,115 +1,106 @@
-import React, { useState, useCallback } from 'react';
+import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Control from 'react-leaflet-control';
 
+import ControlPanel from '../ControlPanel';
+import ControlsBlock from '../ControlsBlock';
 import StateControl from '../StateControl';
 import InputMissionForm from '../InputMissionForm';
 import PrimaryButton from '../PrimaryButton';
 import Button from '../Button';
 
-import 'react-input-range/lib/css/index.css';
+import Context from '../ViewInputMission/context';
+import events from '../ViewInputMission/events';
+import AreaTypes from '../InputMissionAreas/AreaTypes';
+
 import './index.css';
 
 const Controls = {
   MISSION_PARAMS: 'missionParams'
 };
 
-const DrawingControls = {
-  SCOUTING_AREA: 'scoutingArea',
-  DUMP_AMMO_AREA: 'dumpAmmoArea',
-  DEPARTURE_AREA: 'departureArea',
-  LANDING_AREA: 'landingArea'
-};
+const InputMissionControl = ({ position, stylization }) => {
+  const { state, dispatch } = useContext(Context);
 
-const SimulationControl = ({ position, stylization }) => {
-  const [activeControl, setControl] = useState(null);
-  const [activeDrawingControl, setDrawingControl] = useState(null);
+  const stopDrawing = useCallback(() => {
+    dispatch({ type: events.SET_DRAWING_MODE, data: null });
+  }, [dispatch]);
 
-  const setActiveControl = useCallback(name => {
-    const isExistName = Object.values(Controls).includes(name);
-    if (isExistName) {
-      setControl(name);
-    }
-  }, []);
-  const closeControl = useCallback(() => {
-    setControl(null);
-  }, []);
-
-  const setActiveDrawingControl = useCallback(name => {
-    const isExistName = Object.values(DrawingControls).includes(name);
-    if (isExistName) {
-      setDrawingControl(name);
-    }
-  }, []);
-  const closeDrawingControl = useCallback(() => {
-    setDrawingControl(null);
-  }, []);
+  const setDrawingMode = useCallback(
+    mode => {
+      dispatch({ type: events.SET_DRAWING_MODE, data: mode });
+    },
+    [dispatch]
+  );
 
   return (
     <Control position={position}>
-      <div className={classNames('input-mission-control', stylization)}>
-        <div className="control-title">
-          <span className="title">Ввод боевого задания</span>
-          <i className="fa fa-times close-button" aria-hidden="true"></i>
-        </div>
+      <ControlPanel
+        stylization={classNames('input-mission-control', stylization)}
+        title="Ввод боевой задачи"
+      >
         <div className="form-controls">
           <div className="state-controls">
-            <div className="controls-block">
-              <div className="block-icon">
-                <i className="fas fa-flag" />
-              </div>
-              <div className="controls-list">
-                <StateControl
-                  name={Controls.MISSION_PARAMS}
-                  label="Ввод параметров задачи"
-                  activeControl={activeControl}
-                  onChoose={setActiveControl}
-                  onClose={closeControl}
-                  stylization="control"
-                >
-                  <InputMissionForm
-                    stylization="control-panel modal-theme"
-                    onClose={closeControl}
-                  />
-                </StateControl>
-              </div>
-            </div>
+            <ControlsBlock>
+              {(active, setActive, closeActive) => (
+                <div className="controls-block">
+                  <div className="block-icon">
+                    <i className="fas fa-flag" />
+                  </div>
+                  <div className="controls-list">
+                    <StateControl
+                      name={Controls.MISSION_PARAMS}
+                      label="Ввод параметров задачи"
+                      active={Controls.MISSION_PARAMS === active}
+                      onChoose={setActive}
+                      onClose={closeActive}
+                      stylization="control"
+                    >
+                      <InputMissionForm
+                        stylization="control-panel modal-theme"
+                        onClose={closeActive}
+                      />
+                    </StateControl>
+                  </div>
+                </div>
+              )}
+            </ControlsBlock>
             <div className="controls-block">
               <div className="block-icon">
                 <i className="fas fa-map" />
               </div>
               <div className="controls-list">
                 <StateControl
-                  name={DrawingControls.SCOUTING_AREA}
+                  name={AreaTypes.SCOUTING_AREA}
                   label="Ввод области ЦР"
-                  activeControl={activeDrawingControl}
-                  onChoose={setActiveDrawingControl}
-                  onClose={closeDrawingControl}
+                  active={AreaTypes.SCOUTING_AREA === state.drawingMode}
+                  onChoose={setDrawingMode}
+                  onClose={stopDrawing}
                   stylization="control"
                 />
                 <StateControl
-                  name={DrawingControls.DUMP_AMMO_AREA}
+                  name={AreaTypes.DUMP_AMMO_AREA}
                   label="Ввод области сброса неисп. СГ"
-                  activeControl={activeDrawingControl}
-                  onChoose={setActiveDrawingControl}
-                  onClose={closeDrawingControl}
+                  active={AreaTypes.DUMP_AMMO_AREA === state.drawingMode}
+                  onChoose={setDrawingMode}
+                  onClose={stopDrawing}
                   stylization="control"
                 />
                 <StateControl
-                  name={DrawingControls.DEPARTURE_AREA}
+                  name={AreaTypes.DEPARTURE_AREA}
                   label="Ввод области отправления"
-                  activeControl={activeDrawingControl}
-                  onChoose={setActiveDrawingControl}
-                  onClose={closeDrawingControl}
+                  active={AreaTypes.DEPARTURE_AREA === state.drawingMode}
+                  onChoose={setDrawingMode}
+                  onClose={stopDrawing}
                   stylization="control"
                 />
                 <StateControl
-                  name={DrawingControls.LANDING_AREA}
+                  name={AreaTypes.LANDING_AREA}
                   label="Ввод области приземления"
-                  activeControl={activeDrawingControl}
-                  onChoose={setActiveDrawingControl}
-                  onClose={closeDrawingControl}
+                  active={AreaTypes.LANDING_AREA === state.drawingMode}
+                  onChoose={setDrawingMode}
+                  onClose={stopDrawing}
                   stylization="control"
                 />
               </div>
@@ -120,19 +111,19 @@ const SimulationControl = ({ position, stylization }) => {
             <Button stylization="submit-controls-button">Сбросить</Button>
           </div>
         </div>
-      </div>
+      </ControlPanel>
     </Control>
   );
 };
 
-SimulationControl.propTypes = {
+InputMissionControl.propTypes = {
   position: PropTypes.string,
   stylization: PropTypes.string
 };
 
-SimulationControl.defaultProps = {
+InputMissionControl.defaultProps = {
   position: 'topleft',
   stylization: ''
 };
 
-export default SimulationControl;
+export default InputMissionControl;

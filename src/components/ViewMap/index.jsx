@@ -4,7 +4,8 @@ import { Map as LeafletMap, TileLayer } from 'react-leaflet';
 
 import './index.css';
 
-const ViewMap = ({ children }) => {
+const ViewMap = ({ onClick, children }) => {
+  const zoom = 0;
   const center = [0, 0];
   const bounds = [
     [59.96377573688943, 30.513410568237305],
@@ -15,11 +16,12 @@ const ViewMap = ({ children }) => {
     <LeafletMap
       id="root-map"
       center={center}
-      zoom={0}
+      zoom={zoom}
       zoomControl={false}
       bounds={bounds}
       maxBounds={bounds}
       maxBoundsViscosity={1.0}
+      onClick={onClick}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {children}
@@ -28,10 +30,12 @@ const ViewMap = ({ children }) => {
 };
 
 ViewMap.propTypes = {
+  onClick: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element])
 };
 
 ViewMap.defaultProps = {
+  onClick: () => {},
   children: null
 };
 

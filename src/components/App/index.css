@@ -1,5 +1,3 @@
-@import '../../../node_modules/leaflet/dist/leaflet.css';
-
 .map-application {
   font-size: 13px;
   font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -116,18 +114,16 @@ button {
   box-sizing: border-box;
 }
 
-.map-application input[type='text'] {
+.map-application input {
   outline: none;
   font-size: 13px;
   border: 1px solid #797979;
   text-indent: 4px;
 }
 
-.map-application input[type='number'] {
+.ap-application select {
   outline: none;
-  font-size: 13px;
   border: 1px solid #797979;
-  text-indent: 4px;
 }
 
 .map-application input[type='email'] {

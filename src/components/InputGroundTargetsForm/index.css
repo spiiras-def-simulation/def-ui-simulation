@@ -1,0 +1,70 @@
+.input-ground-targets-form {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-ground-targets-form .form-controls {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.input-ground-targets-form .inputs-list .form-input {
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.input-ground-targets-form .form-input input {
+  height: 26px;
+  width: 100%;
+}
+
+.input-ground-targets-form .form-input .input-coordinates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-ground-targets-form .input-coordinates button {
+  flex-shrink: 0;
+  height: 26px;
+  width: 26px;
+}
+
+.input-ground-targets-form .input-coordinates button:hover {
+  cursor: pointer;
+}
+
+.input-ground-targets-form .input-coordinates .set-point-button {
+  color: #888888;
+}
+
+.input-ground-targets-form .input-coordinates .set-point-button:hover {
+  color: #555555;
+}
+
+.input-ground-targets-form .input-coordinates .active-set-point-button {
+  color: red;
+}
+
+.input-ground-targets-form .input-coordinates button i {
+  line-height: 26px;
+  font-size: 14px;
+}
+
+.input-ground-targets-form .input-coordinates input {
+  flex-grow: 1;
+}
+
+.input-ground-targets-form .input-coordinates input:first-of-type {
+  margin-right: 4px;
+}
+
+.input-ground-targets-form .form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-ground-targets-form .form-buttons .form-submit-button {
+  width: 90px;
+}

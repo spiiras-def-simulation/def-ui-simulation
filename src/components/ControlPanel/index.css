@@ -1,0 +1,35 @@
+.control-panel {
+  position: relative;
+  width: 260px;
+}
+
+.control-panel > .panel-title {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px solid grey;
+}
+
+.control-panel .panel-title .title {
+  flex-grow: 1;
+}
+
+.control-panel .panel-title .close-button {
+  font-size: 20px;
+  color: #7f7f7f;
+}
+
+.control-panel .panel-title .close-button:hover {
+  cursor: pointer;
+}
+
+.control-panel > .panel-title:last-child {
+  border-bottom: none;
+}
+
+.control-panel > .panel-content {
+  padding-left: 8px;
+  padding-right: 6px;
+}

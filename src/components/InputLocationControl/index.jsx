@@ -1,105 +1,67 @@
-import React, { useState, useCallback } from 'react';
+import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Control from 'react-leaflet-control';
 
+import ControlPanel from '../ControlPanel';
 import StateControl from '../StateControl';
-import SetLocationPosition from '../SetLocationPosition';
 import PrimaryButton from '../PrimaryButton';
 
-import 'react-input-range/lib/css/index.css';
+import Context from '../ViewInputLocation/context';
+import events from '../ViewInputLocation/events';
+import AreaTypes from '../InputLocationAreas/AreaTypes';
+
 import './index.css';
 
-const Controls = {
-  LOCATION_POSITION: 'locationPosition'
-};
-
-const DrawingControls = {
-  RADAR_WARFARE_AREA: 'radarWarfareArea',
-  RADAR_JAMMING_AREA: 'radarJammingArea',
-  IMPASSABLE_AREA: 'impassableArea'
-};
-
 const InputLocationControl = ({ position, stylization }) => {
-  const [activeControl, setControl] = useState(null);
-  const [activeDrawingControl, setDrawingControl] = useState(null);
+  const { state, dispatch } = useContext(Context);
 
-  const pushControlPanel = useCallback(name => {
-    const isExistName = Object.values(Controls).includes(name);
-    if (isExistName) {
-      setControl(name);
-    }
-  }, []);
-  const closeControlPanel = useCallback(() => {
-    setControl(null);
-  }, []);
+  const stopDrawing = useCallback(() => {
+    dispatch({ type: events.SET_DRAWING_MODE, data: null });
+  }, [dispatch]);
 
-  const pushDrawingControlPanel = useCallback(name => {
-    const isExistName = Object.values(DrawingControls).includes(name);
-    if (isExistName) {
-      setDrawingControl(name);
-    }
-  }, []);
-  const closeDrawingControlPanel = useCallback(() => {
-    setDrawingControl(null);
-  }, []);
+  const setDrawingMode = useCallback(
+    mode => {
+      dispatch({ type: events.SET_DRAWING_MODE, data: mode });
+    },
+    [dispatch]
+  );
 
   return (
     <Control position={position}>
-      <div className={classNames('input-location-control', stylization)}>
-        <div className="control-title">
-          <span className="title">Ввод параметров местности</span>
-          <i className="fa fa-times close-button" aria-hidden="true"></i>
-        </div>
+      <ControlPanel
+        stylization={classNames('input-location-control', stylization)}
+        title="Ввод параметров местности"
+      >
         <div className="form-controls">
           <div className="state-controls">
-            <div className="controls-block">
-              <div className="block-icon">
-                <i className="fas fa-map-marked-alt" />
-              </div>
-              <div className="controls-list">
-                <StateControl
-                  name={Controls.LOCATION_POSITION}
-                  label="Ввод положения местности"
-                  activeControl={activeControl}
-                  onChoose={pushControlPanel}
-                  onClose={closeControlPanel}
-                  stylization="control"
-                >
-                  <SetLocationPosition
-                    stylization="control-panel modal-theme"
-                    onClose={closeControlPanel}
-                  />
-                </StateControl>
-              </div>
-            </div>
             <div className="controls-block">
               <div className="block-icon">
                 <i className="fas fa-map" />
               </div>
               <div className="controls-list">
                 <StateControl
-                  name={DrawingControls.RADAR_WARFARE_AREA}
+                  name={AreaTypes.RADAR_WARFARE_AREA}
                   label="Ввод области РЭБ"
-                  activeControl={activeDrawingControl}
-                  onChoose={pushDrawingControlPanel}
-                  onClose={closeDrawingControlPanel}
+                  active={AreaTypes.RADAR_WARFARE_AREA === state.drawingMode}
+                  onChoose={setDrawingMode}
+                  onClose={stopDrawing}
                   stylization="control"
                 />
                 <StateControl
-                  name={DrawingControls.RADAR_JAMMING_AREA}
+                  name={AreaTypes.RADAR_JAMMING_AREA}
                   label="Ввод области РЭП"
-                  activeControl={activeDrawingControl}
-                  onChoose={pushDrawingControlPanel}
-                  onClose={closeDrawingControlPanel}
+                  active={AreaTypes.RADAR_JAMMING_AREA === state.drawingMode}
+                  onChoose={setDrawingMode}
+                  onClose={stopDrawing}
                   stylization="control"
                 />
                 <StateControl
-                  name={DrawingControls.IMPASSABLE_AREA}
+                  name={AreaTypes.IMPASSABLE_AREA}
                   label="Ввод непроходимой области"
-                  activeControl={activeDrawingControl}
-                  onChoose={pushDrawingControlPanel}
-                  onClose={closeDrawingControlPanel}
+                  active={AreaTypes.IMPASSABLE_AREA === state.drawingMode}
+                  onChoose={setDrawingMode}
+                  onClose={stopDrawing}
                   stylization="control"
                 />
               </div>
@@ -109,7 +71,7 @@ const InputLocationControl = ({ position, stylization }) => {
             <PrimaryButton stylization="submit-controls-button">Сохранить</PrimaryButton>
           </div>
         </div>
-      </div>
+      </ControlPanel>
     </Control>
   );
 };
