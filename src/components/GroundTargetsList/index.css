@@ -1,0 +1,38 @@
+.ground-targets-list {
+  min-width: 260px;
+  max-height: 320px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.ground-targets-list .list-title {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 30px;
+  border-bottom: 1px solid grey;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 4px;
+}
+
+.ground-targets-list .list-title .title {
+  flex-grow: 1;
+}
+
+.ground-targets-list .list-title .close-button {
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.ground-targets-list .list-title .close-button:hover {
+  cursor: pointer;
+}
+
+.ground-targets-list .list-records {
+  overflow: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-bottom: 4px;
+}

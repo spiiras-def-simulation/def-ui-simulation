@@ -11,8 +11,8 @@ import { ADD_UNIT_TYPE } from './requests';
 import './index.css';
 
 const InputUnitTypeForm = ({ stylization, onClose }) => {
-  const [addUnitType] = useMutation(ADD_UNIT_TYPE);
   const [values, setValues] = useState({});
+  const [addUnitType] = useMutation(ADD_UNIT_TYPE);
 
   const handleInputValue = useCallback(
     ({ target }) => {

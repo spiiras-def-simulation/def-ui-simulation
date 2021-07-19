@@ -8,8 +8,8 @@ import RefControl from '../RefControl';
 import InputUnitTypeForm from '../InputUnitTypeForm';
 import AddUnitForm from '../AddUnitForm';
 import ShowUnitsList from '../ShowUnitsList';
-import SetLocationPosition from '../SetLocationPosition';
-import ShowGroundTargetsList from '../ShowGroundTargetsList';
+// import SetLocationPosition from '../SetLocationPosition';
+import GroundTargetsList from '../GroundTargetsList';
 
 import './index.css';
 
@@ -102,10 +102,7 @@ const SimulationControl = ({ position, stylization }) => {
                 onClose={closeControl}
                 stylization="control"
               >
-                <ShowGroundTargetsList
-                  stylization="control-panel modal-theme"
-                  onClose={closeControl}
-                />
+                <GroundTargetsList stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
             </div>
           </div>
@@ -114,7 +111,7 @@ const SimulationControl = ({ position, stylization }) => {
               <i className="fas fa-map" />
             </div>
             <div className="controls-list">
-              <StateControl
+              {/* <StateControl
                 name={Controls.SET_LOCATION_POSITION}
                 label="Установить положение местности"
                 active={Controls.SET_LOCATION_POSITION === activeControl}
@@ -126,7 +123,7 @@ const SimulationControl = ({ position, stylization }) => {
                   stylization="control-panel modal-theme"
                   onClose={closeControl}
                 />
-              </StateControl>
+              </StateControl> */}
               <RefControl
                 name={Controls.INPUT_LOCATION}
                 label="Ввод параметров местности"

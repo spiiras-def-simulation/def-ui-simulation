@@ -5,6 +5,7 @@ import ReturnViewControl from '../ReturnViewControl';
 import DateStatus from '../DateStatus';
 import InputGroundTargetsForm from '../InputGroundTargetsForm';
 import MarkerPosition from '../MarkerPosition';
+import GroundTargetObjectsLayer from '../GroundTargetObjectsLayer';
 
 import Context from './context';
 import { initialState, events, reducer } from './reducer';
@@ -30,16 +31,16 @@ const ViewInputGroundTargets = () => {
     [mapPointStatus]
   );
 
+  const { location, target } = values;
   return (
     <Context.Provider value={{ state, dispatch }}>
       <ViewMap onClick={handleSetMapPoint}>
         <ReturnViewControl position="topleft" stylization="modal-theme" />
         <InputGroundTargetsForm position="topleft" stylization="modal-theme" />
         <DateStatus position="topright" />
-        {values.location && (
-          <MarkerPosition position={values.location} options={{ color: 'green' }} />
-        )}
-        {values.target && <MarkerPosition position={values.target} options={{ color: 'red' }} />}
+        {location && <MarkerPosition position={values.location} options={{ color: 'green' }} />}
+        {target && <MarkerPosition position={values.target} options={{ color: 'red' }} />}
+        <GroundTargetObjectsLayer />
       </ViewMap>
     </Context.Provider>
   );

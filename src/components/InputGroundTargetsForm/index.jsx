@@ -7,6 +7,8 @@ import Control from 'react-leaflet-control';
 import ControlPanel from '../ControlPanel';
 import PrimaryButton from '../PrimaryButton';
 
+import MapContext from '../ViewMap/context';
+
 import Context from '../ViewInputGroundTargets/context';
 import { events } from './reducer';
 import { ADD_GROUND_TARGETS } from './requests';
@@ -15,6 +17,7 @@ import './index.css';
 
 const InputGroundTargetsForm = ({ position, stylization }) => {
   const { state, dispatch } = useContext(Context);
+  const { projection } = useContext(MapContext);
   const [addGroundTargets] = useMutation(ADD_GROUND_TARGETS);
 
   const { mapPointStatus, values } = state;
@@ -31,12 +34,24 @@ const InputGroundTargetsForm = ({ position, stylization }) => {
   );
 
   const handleSubmitGroundTargets = useCallback(() => {
+    const location = projection.unproject(values.location);
+    const target = projection.unproject(values.target);
     addGroundTargets({
       variables: {
-        input: { ...values }
+        input: {
+          ...values,
+          location: {
+            x: location.x,
+            y: location.y
+          },
+          target: {
+            x: target.x,
+            y: target.y
+          }
+        }
       }
     });
-  }, [values, addGroundTargets]);
+  }, [projection, values, addGroundTargets]);
 
   const { number, location, target } = values;
   return (
