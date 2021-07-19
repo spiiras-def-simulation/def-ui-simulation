@@ -6,7 +6,7 @@ import WeatherStatus from '../WeatherStatus';
 import DateStatus from '../DateStatus';
 // import EventsTimeline from '../EventsTimeline';
 
-import LayerTargetObjects from '../LayerTargetObjects';
+import GroundTargetObjectsLayer from '../GroundTargetObjectsLayer';
 
 const ViewSimulation = () => {
   return (
@@ -15,7 +15,7 @@ const ViewSimulation = () => {
       <DateStatus position="topright" />
       <WeatherStatus position="topright" />
       {/* <EventsTimeline position="topright" /> */}
-      <LayerTargetObjects />
+      <GroundTargetObjectsLayer />
     </ViewMap>
   );
 };
