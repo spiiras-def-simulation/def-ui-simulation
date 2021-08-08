@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import EditLayerControl from '../EditLayerControl';
-import AreaObjects from '../AreaObjects';
+import AreaObject from '../AreaObject';
 
 import Context from '../ViewInputMission/context';
 import events from '../ViewInputMission/events';
@@ -38,7 +38,7 @@ const InputMissionAreas = () => {
     dispatch({ type: events.REMOVE_AREA_OBJECTS, data: { objects } });
   };
 
-  const drawingArea = areas[drawingMode] || [];
+  const drawingArea = areas[drawingMode] || null;
   const renderedAreas = Object.entries(areas).filter(([type]) => type !== drawingMode);
 
   return (
@@ -50,11 +50,13 @@ const InputMissionAreas = () => {
           updateObjects={onUpdateAreaObjects}
           removeObjects={onRemoveAreaObjects}
         >
-          <AreaObjects objects={drawingArea} color="blue" />
+          {drawingArea && <AreaObject id={drawingArea.id} data={drawingArea.data} color="blue" />}
         </EditLayerControl>
       )}
-      {renderedAreas.map(([type, objects]) => {
-        return <AreaObjects key={type} color={areaColors.get(type)} objects={objects} />;
+      {renderedAreas.map(([type, object]) => {
+        return (
+          <AreaObject key={type} id={object.id} data={object.data} color={areaColors.get(type)} />
+        );
       })}
     </>
   );

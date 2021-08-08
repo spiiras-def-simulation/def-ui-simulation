@@ -4,14 +4,43 @@ const handleSetMissionParams = (prevState, data) => {
   return { ...prevState, params: { ...data } };
 };
 
+const handleChangeScoutGroupRole = (prevState, data) => {
+  const nextState = { ...prevState };
+  nextState.units.scoutRole = data;
+  return nextState;
+};
+
+const handleChangeStrikeGroupRole = (prevState, data) => {
+  const nextState = { ...prevState };
+  nextState.units.strikeRole = data;
+  return nextState;
+};
+
+const handleSetUnitGroup = (prevState, data) => {
+  const nextState = { ...prevState };
+  nextState.units.uavs = data;
+  return nextState;
+};
+
+const handleSetMapPoint = (prevState, data) => {
+  const { mapPointMode } = prevState;
+  const locations = { ...prevState.locations };
+  locations[mapPointMode] = data;
+  return { ...prevState, locations };
+};
+
 const handleSetDrawingMode = (prevState, data) => {
   return { ...prevState, drawingMode: data };
+};
+
+const handleSetMapPointMode = (prevState, data) => {
+  return { ...prevState, mapPointMode: data };
 };
 
 const handleCreateAreaObject = (prevState, { object }) => {
   const { drawingMode } = prevState;
   const areas = { ...prevState.areas };
-  areas[drawingMode] = (areas[drawingMode] || []).concat(object);
+  areas[drawingMode] = object;
 
   return { ...prevState, areas };
 };
@@ -19,26 +48,28 @@ const handleCreateAreaObject = (prevState, { object }) => {
 const handleUpdateAreaObjects = (prevState, { objects }) => {
   const { drawingMode } = prevState;
   const areas = { ...prevState.areas };
-  areas[drawingMode] = prevState.areas[drawingMode].map(areaObject =>
-    objects.find(object => areaObject.id === object.id || areaObject)
-  );
+  const [addedObject] = objects;
+  areas[drawingMode] = addedObject;
 
   return { ...prevState, areas };
 };
 
-const handleRemoveAreaObjects = (prevState, { objects }) => {
+const handleRemoveAreaObjects = prevState => {
   const { drawingMode } = prevState;
   const areas = { ...prevState.areas };
-  areas[drawingMode] = prevState.areas[drawingMode].filter(
-    areaObject => !objects.includes(areaObject.id)
-  );
+  areas[drawingMode] = null;
 
   return { ...prevState, areas };
 };
 
 const handlers = new Map([
   [events.SET_MISSION_PARAMS, handleSetMissionParams],
+  [events.CHANGE_SCOUT_GROUP_ROLE, handleChangeScoutGroupRole],
+  [events.CHANGE_STRIKE_GROUP_ROLE, handleChangeStrikeGroupRole],
+  [events.SET_UNIT_GROUP, handleSetUnitGroup],
+  [events.SET_MAP_POINT, handleSetMapPoint],
   [events.SET_DRAWING_MODE, handleSetDrawingMode],
+  [events.SET_MAP_POINT_MODE, handleSetMapPointMode],
   [events.CREATE_AREA_OBJECT, handleCreateAreaObject],
   [events.UPDATE_AREA_OBJECTS, handleUpdateAreaObjects],
   [events.REMOVE_AREA_OBJECTS, handleRemoveAreaObjects]

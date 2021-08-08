@@ -31,15 +31,15 @@ const ViewInputGroundTargets = () => {
     [mapPointStatus]
   );
 
-  const { location, target } = values;
+  const { location = null, target = null } = values;
   return (
     <Context.Provider value={{ state, dispatch }}>
       <ViewMap onClick={handleSetMapPoint}>
         <ReturnViewControl position="topleft" stylization="modal-theme" />
         <InputGroundTargetsForm position="topleft" stylization="modal-theme" />
         <DateStatus position="topright" />
-        {location && <MarkerPosition position={values.location} options={{ color: 'green' }} />}
-        {target && <MarkerPosition position={values.target} options={{ color: 'red' }} />}
+        {location && <MarkerPosition position={location} options={{ color: 'green' }} />}
+        {target && <MarkerPosition position={target} options={{ color: 'red' }} />}
         <GroundTargetObjectsLayer />
       </ViewMap>
     </Context.Provider>

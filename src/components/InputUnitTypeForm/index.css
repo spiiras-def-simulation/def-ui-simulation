@@ -1,10 +1,10 @@
-.add-unit-type-form {
-  width: 320px;
+.input-unit-type-form {
+  width: 260px;
   display: flex;
   flex-direction: column;
 }
 
-.add-unit-type-form .form-title {
+.input-unit-type-form .form-title {
   display: flex;
   align-items: center;
   height: 30px;
@@ -14,47 +14,47 @@
   border-bottom: 1px solid grey;
 }
 
-.add-unit-type-form .form-title .title {
+.input-unit-type-form .form-title .title {
   flex-grow: 1;
 }
 
-.add-unit-type-form .form-title .close-button {
+.input-unit-type-form .form-title .close-button {
   font-size: 14px;
   color: #7f7f7f;
 }
 
-.add-unit-type-form .form-title .close-button:hover {
+.input-unit-type-form .form-title .close-button:hover {
   cursor: pointer;
 }
 
-.add-unit-type-form .inputs-list .form-input {
+.input-unit-type-form .inputs-list .form-input {
   font-size: 11px;
   padding-left: 14px;
   padding-right: 14px;
   margin-bottom: 6px;
 }
 
-.add-unit-type-form .form-input .input-field {
+.input-unit-type-form .form-input .input-field {
   height: 26px;
   width: 100%;
 }
 
-.add-unit-type-form .form-input .input-range {
+.input-unit-type-form .form-input .input-range {
   display: flex;
   justify-content: space-between;
 }
 
-.add-unit-type-form .form-input .input-range .input-field {
+.input-unit-type-form .form-input .input-range .input-field {
   width: 49%;
 }
 
-.add-unit-type-form .form-buttons {
+.input-unit-type-form .form-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 6px;
 }
 
-.add-unit-type-form .form-buttons .form-submit-button {
+.input-unit-type-form .form-buttons .form-submit-button {
   width: 90px;
 }

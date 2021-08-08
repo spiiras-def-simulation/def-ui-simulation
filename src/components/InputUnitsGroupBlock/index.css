@@ -1,0 +1,32 @@
+.input-units-group-block .input-value {
+  height: 26px;
+  width: 100%;
+}
+
+.input-units-group-block .input-block {
+  margin-bottom: 4px;
+}
+
+.input-units-group-block .input-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.input-units-group-block .input-options .input-option {
+  padding-left: 6px;
+  height: 22px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-units-group-block .input-option input {
+  margin-right: 4px;
+}
+
+.input-units-group-block .input-option input:hover {
+  cursor: pointer;
+}
+
+.input-units-group-block .input-option span {
+  font-size: 12px;
+}

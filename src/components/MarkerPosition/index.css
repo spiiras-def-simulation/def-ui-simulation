@@ -12,3 +12,7 @@
   color: white;
   text-align: center;
 }
+
+.marker-position .marker-position-icon:hover {
+  z-index: 10000;
+}

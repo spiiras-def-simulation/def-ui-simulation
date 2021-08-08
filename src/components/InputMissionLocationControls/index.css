@@ -1,0 +1,13 @@
+.input-mission-location-controls {
+  font-size: 11px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.input-mission-location-controls .location-control-block {
+  margin-bottom: 4px;
+}
+
+.input-mission-location-controls .location-control-block:last-of-type {
+  margin-bottom: 0;
+}

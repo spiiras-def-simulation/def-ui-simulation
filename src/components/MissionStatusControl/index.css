@@ -1,0 +1,9 @@
+.mission-status-control {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-status-control .status-description {
+  min-height: 200px;
+}

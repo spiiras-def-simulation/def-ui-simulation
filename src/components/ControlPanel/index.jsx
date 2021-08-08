@@ -4,18 +4,18 @@ import classNames from 'classnames';
 
 import './index.css';
 
-const ControlPanel = ({ stylization, title, children }) => {
-  const [opened, setPanelState] = useState(true);
+const ControlPanel = ({ stylization, title, children, opened }) => {
+  const [isOpened, setPanelState] = useState(opened);
 
   return (
     <div className={classNames('control-panel', stylization)}>
-      <div className="panel-title">
+      <button className="panel-title" type="button" onClick={() => setPanelState(!isOpened)}>
         <span className="title">{title}</span>
-        <button className="close-button" type="button" onClick={() => setPanelState(!opened)}>
-          {opened ? <i className="fas fa-angle-up" /> : <i className="fas fa-angle-down" />}
-        </button>
-      </div>
-      {opened && <div className="panel-content">{children}</div>}
+        <p className="close-status">
+          {isOpened ? <i className="fas fa-angle-up" /> : <i className="fas fa-angle-down" />}
+        </p>
+      </button>
+      {isOpened && <div className="panel-content">{children}</div>}
     </div>
   );
 };
@@ -23,11 +23,13 @@ const ControlPanel = ({ stylization, title, children }) => {
 ControlPanel.propTypes = {
   stylization: PropTypes.string,
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  opened: PropTypes.bool
 };
 
 ControlPanel.defaultProps = {
-  stylization: ''
+  stylization: '',
+  opened: true
 };
 
 export default ControlPanel;

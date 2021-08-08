@@ -1,0 +1,9 @@
+.ground-targets-status-control {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ground-targets-status-control .status-description {
+  min-height: 200px;
+}

@@ -1,0 +1,7 @@
+.units-group-form-fields .input-field {
+  margin-bottom: 6px;
+}
+
+.units-group-form-fields .input-field:last-of-type {
+  margin-bottom: 0;
+}

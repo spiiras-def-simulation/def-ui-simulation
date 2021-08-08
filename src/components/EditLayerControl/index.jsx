@@ -80,8 +80,7 @@ const optionsType = {
 };
 
 EditLayerControl.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element])
-    .isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
   options: PropTypes.shape(optionsType),
   createObject: PropTypes.func,
   updateObjects: PropTypes.func,
@@ -89,6 +88,7 @@ EditLayerControl.propTypes = {
 };
 
 EditLayerControl.defaultProps = {
+  children: null,
   options: {},
   createObject: () => {},
   updateObjects: () => {},

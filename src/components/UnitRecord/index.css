@@ -1,0 +1,30 @@
+.unit-record {
+  display: flex;
+  height: 24px;
+}
+
+.unit-record .record-header {
+  height: 24px;
+  line-height: 24px;
+}
+
+.unit-record .record-header span {
+  margin-right: 2px;
+}
+
+.unit-record .record-header .delete-button {
+  color: blue;
+}
+
+.unit-record .record-header .delete-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.unit-record .record-descriptor {
+  padding-left: 6px;
+}
+
+.unit-record .record-descriptor .descriptor-coordinate {
+  height: 20px;
+}

@@ -1,0 +1,9 @@
+.units-group-status-control {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.units-group-status-control .status-description {
+  min-height: 200px;
+}
