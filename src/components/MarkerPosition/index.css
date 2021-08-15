@@ -1,14 +1,18 @@
 .marker-position .marker-position-icon {
   position: relative;
-  top: -7px;
-  left: -7px;
+  top: -3px;
+  left: -3px;
   width: 16px;
   height: 16px;
   border-radius: 100%;
   border: 1px solid white;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
   line-height: 15px;
-  font-size: 8px;
+  font-size: 9px;
   color: white;
   text-align: center;
+}
+
+.marker-position .marker-position-icon:hover {
+  z-index: 10000;
 }

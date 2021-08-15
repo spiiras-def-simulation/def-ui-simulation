@@ -1,0 +1,45 @@
+.input-location-form-field {
+  display: flex;
+}
+
+.input-location-form-field input {
+  height: 26px;
+}
+
+.input-location-form-field .inputs-location {
+  flex-grow: 1;
+}
+
+.input-location-form-field .inputs-location input {
+  display: inline-block;
+  width: calc(50% - 2px);
+}
+
+.input-location-form-field .inputs-location input:first-of-type {
+  margin-right: 4px;
+}
+
+.input-location-form-field .status-button {
+  flex-shrink: 0;
+  height: 26px;
+  width: 26px;
+  color: #888888;
+}
+
+.input-location-form-field .status-button:hover {
+  cursor: pointer;
+  color: #555555;
+}
+
+.input-location-form-field .status-button i {
+  line-height: 26px;
+  font-size: 14px;
+}
+
+.input-location-form-field .active-button {
+  color: red;
+}
+
+.input-location-form-field .active-button:hover {
+  color: red;
+}

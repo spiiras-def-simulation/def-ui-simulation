@@ -122,8 +122,11 @@ button {
 }
 
 .ap-application select {
-  outline: none;
   border: 1px solid #797979;
+}
+
+.ap-application select:focus {
+  outline: none;
 }
 
 .map-application input[type='email'] {

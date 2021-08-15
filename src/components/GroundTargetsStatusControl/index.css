@@ -1,0 +1,8 @@
+.ground-targets-status-control {
+  width: 260px;
+  font-size: 13px;
+}
+
+.ground-targets-status-control .status-description {
+  min-height: 200px;
+}

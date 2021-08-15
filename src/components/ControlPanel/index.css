@@ -4,6 +4,7 @@
 }
 
 .control-panel > .panel-title {
+  width: 100%;
   height: 30px;
   display: flex;
   align-items: center;
@@ -14,15 +15,16 @@
 
 .control-panel .panel-title .title {
   flex-grow: 1;
+  text-align: left;
 }
 
-.control-panel .panel-title .close-button {
+.control-panel .panel-title:hover {
+  cursor: pointer;
+}
+
+.control-panel .panel-title .close-status {
   font-size: 20px;
   color: #7f7f7f;
-}
-
-.control-panel .panel-title .close-button:hover {
-  cursor: pointer;
 }
 
 .control-panel > .panel-title:last-child {
@@ -31,5 +33,5 @@
 
 .control-panel > .panel-content {
   padding-left: 8px;
-  padding-right: 6px;
+  padding-right: 8px;
 }

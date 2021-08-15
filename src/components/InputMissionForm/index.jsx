@@ -31,13 +31,13 @@ const inputs = [
   {
     title: 'Гарантир. уровень выполнения ЦЗ (%):',
     type: 'number',
-    name: 'runlevel',
+    name: 'successLevel',
     placeholder: 0
   },
   {
     title: 'Гарантир. успех поражения ЦО (%):',
     type: 'number',
-    name: 'lesionLevel',
+    name: 'strikeLevel',
     placeholder: 0
   }
 ];

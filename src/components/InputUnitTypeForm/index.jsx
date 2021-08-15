@@ -1,17 +1,18 @@
 import React, { useState, useCallback } from 'react';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import PrimaryButton from '../PrimaryButton';
-import SelectWeapon from '../SelectWeapon';
+import Select from '../Select';
 
-import { ADD_UNIT_TYPE } from './requests';
+import { GET_COMBAT_UNIT_WEAPONS, ADD_UNIT_TYPE } from './requests';
 
 import './index.css';
 
 const InputUnitTypeForm = ({ stylization, onClose }) => {
   const [values, setValues] = useState({});
+  const { data } = useQuery(GET_COMBAT_UNIT_WEAPONS);
   const [addUnitType] = useMutation(ADD_UNIT_TYPE);
 
   const handleInputValue = useCallback(
@@ -22,7 +23,14 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
     },
     [values]
   );
-
+  const handleInputNumber = useCallback(
+    ({ target }) => {
+      const nextState = { ...values };
+      nextState[target.name] = parseInt(target.value, 10);
+      setValues(nextState);
+    },
+    [values]
+  );
   const handleSubmitUnitType = useCallback(() => {
     const {
       rangeVelocityMin: velMin,
@@ -38,11 +46,11 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
     inputValues.rangeVelocityUpVertical = [velUpVertMin, velUpVertMax];
     inputValues.rangeVelocityDownVertical = [velDownVertMin, velDownVertMax];
 
-    addUnitType({ variables: { input: { ...inputValues } } });
+    addUnitType({ variables: { input: inputValues } });
   }, [values, addUnitType]);
 
   return (
-    <form className={classNames('add-unit-type-form', stylization)}>
+    <form className={classNames('input-unit-type-form', stylization)}>
       <div className="form-title">
         <span className="title">Создание нового типа БпЛА</span>
         <button className="close-button" type="button" onClick={onClose}>
@@ -69,7 +77,7 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               name="rangeVelocityMin"
               placeholder="мин"
               value={values.rangeVelocityMin || ''}
-              onChange={handleInputValue}
+              onChange={handleInputNumber}
             />
             <input
               className="input-field"
@@ -77,7 +85,7 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               name="rangeVelocityMax"
               placeholder="макс"
               value={values.rangeVelocityMax || ''}
-              onChange={handleInputValue}
+              onChange={handleInputNumber}
             />
           </div>
         </li>
@@ -90,7 +98,7 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               name="rangeVelocityUpVerticalMin"
               placeholder="мин"
               value={values.rangeVelocityUpVerticalMin || ''}
-              onChange={handleInputValue}
+              onChange={handleInputNumber}
             />
             <input
               className="input-field"
@@ -98,7 +106,7 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               name="rangeVelocityUpVerticalMax"
               placeholder="макс"
               value={values.rangeVelocityUpVerticalMax || ''}
-              onChange={handleInputValue}
+              onChange={handleInputNumber}
             />
           </div>
         </li>
@@ -111,7 +119,7 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               name="rangeVelocityDownVerticalMin"
               placeholder="мин"
               value={values.rangeVelocityDownVerticalMin || ''}
-              onChange={handleInputValue}
+              onChange={handleInputNumber}
             />
             <input
               className="input-field"
@@ -119,16 +127,18 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               name="rangeVelocityDownVerticalMax"
               placeholder="макс"
               value={values.rangeVelocityDownVerticalMax || ''}
-              onChange={handleInputValue}
+              onChange={handleInputNumber}
             />
           </div>
         </li>
         <li className="form-input">
           <p>Тип груза:</p>
-          <SelectWeapon
+          <Select
             stylization="input-field"
             name="cargoType"
             value={values.cargoType}
+            defaultValue="Выберите тип груза"
+            options={data ? data.weapons : []}
             onChange={handleInputValue}
           />
         </li>
@@ -140,7 +150,7 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
             name="maxCargoQuantity"
             placeholder="макс"
             value={values.maxCargoQuantity || ''}
-            onChange={handleInputValue}
+            onChange={handleInputNumber}
           />
         </li>
         <li className="form-input">
@@ -151,7 +161,7 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
             name="maxFuelConsume"
             placeholder="макс"
             value={values.maxFuelConsume || ''}
-            onChange={handleInputValue}
+            onChange={handleInputNumber}
           />
         </li>
         <li className="form-input">
@@ -162,7 +172,7 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
             name="maxTurningRadius"
             placeholder="макс"
             value={values.maxTurningRadius || ''}
-            onChange={handleInputValue}
+            onChange={handleInputNumber}
           />
         </li>
       </ul>

@@ -24,20 +24,23 @@ const WeatherStatus = ({ position, stylization }) => {
   //   });
   // }, [subscribeToMore]);
 
+  const { status = null } = data || {};
   return (
     <Control position={position}>
-      {data && (
+      {status && (
         <div className={classNames('weather-status', stylization)}>
           <div className="weather-status-element badge">
             <i className="fas fa-thermometer-three-quarters" />
-            <span>{data.status.temperature}°</span>
+            <span>{status.temperature}°</span>
           </div>
           <div className="weather-status-element badge">
             <i className="fas fa-wind" />
-            <span>
-              {data.status.wind.direction.x}x {data.status.wind.direction.y}y{' '}
-              {data.status.wind.direction.z}z, {data.status.wind.velocity} м/с
-            </span>
+            {status.wind && (
+              <span>
+                {status.wind.direction.x}x {status.wind.direction.y}y {status.wind.direction.z}z,{' '}
+                {status.wind.velocity} м/с
+              </span>
+            )}
           </div>
         </div>
       )}

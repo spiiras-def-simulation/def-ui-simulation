@@ -1,0 +1,31 @@
+.unit-form-field {
+  display: flex;
+}
+
+.unit-form-field .input-values .input-value {
+  height: 26px;
+}
+
+.unit-form-field .input-values .input-select {
+  margin-right: 4px;
+  width: calc(80% - 4px);
+}
+
+.unit-form-field .input-values .input-number {
+  width: 20%;
+  text-indent: 0;
+  text-align: center;
+}
+
+.unit-form-field .close-button {
+  flex-shrink: 0;
+  height: 26px;
+  width: 26px;
+  font-size: 14px;
+  color: #888888;
+}
+
+.unit-form-field .close-button:hover {
+  color: #555555;
+  cursor: pointer;
+}

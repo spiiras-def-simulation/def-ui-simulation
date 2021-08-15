@@ -1,8 +1,5 @@
 const AreaTypes = {
-  SCOUTING_AREA: 'scoutingArea',
-  DUMP_AMMO_AREA: 'dumpAmmoArea',
-  DEPARTURE_AREA: 'departureArea',
-  LANDING_AREA: 'landingArea'
+  SCOUTING_AREA: 'scoutingArea'
 };
 
 export default AreaTypes;

@@ -6,16 +6,17 @@ import Control from 'react-leaflet-control';
 import StateControl from '../StateControl';
 import RefControl from '../RefControl';
 import InputUnitTypeForm from '../InputUnitTypeForm';
-import AddUnitForm from '../AddUnitForm';
-import ShowUnitsList from '../ShowUnitsList';
+import InputUnitRoleForm from '../InputUnitRoleForm';
+import UnitsList from '../UnitsList';
 // import SetLocationPosition from '../SetLocationPosition';
 import GroundTargetsList from '../GroundTargetsList';
 
 import './index.css';
 
 const Controls = {
-  ADD_UNIT: 'addUnit',
   ADD_UNIT_TYPE: 'addUnitType',
+  ADD_UNIT_ROLE: 'addUnitRole',
+  INPUT_UNITS: 'inputUnit',
   SHOW_UNITS_LIST: 'showUnitsList',
   INPUT_GROUND_TARGETS: 'inputGroundTargets',
   SHOW_GROUND_TARGETS_LIST: 'showGroundTargetsList',
@@ -53,7 +54,7 @@ const SimulationControl = ({ position, stylization }) => {
             <div className="controls-list">
               <StateControl
                 name={Controls.ADD_UNIT_TYPE}
-                label="Добавить новый тип БпЛА"
+                label="Добавить тип БпЛА"
                 active={Controls.ADD_UNIT_TYPE === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
@@ -62,15 +63,21 @@ const SimulationControl = ({ position, stylization }) => {
                 <InputUnitTypeForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
               <StateControl
-                name={Controls.ADD_UNIT}
-                label="Добавить новый БпЛА"
-                active={Controls.ADD_UNIT === activeControl}
+                name={Controls.ADD_UNIT_ROLE}
+                label="Добавить роль БпЛА"
+                active={Controls.ADD_UNIT_ROLE === activeControl}
                 onChoose={pushControl}
                 onClose={closeControl}
                 stylization="control"
               >
-                <AddUnitForm stylization="control-panel modal-theme" onClose={closeControl} />
+                <InputUnitRoleForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
+              <RefControl
+                name={Controls.INPUT_UNITS}
+                label="Добавить БпЛА"
+                stylization="control"
+                reference="/operation/input/units"
+              />
               <StateControl
                 name={Controls.SHOW_UNITS_LIST}
                 label="Список БпЛА"
@@ -79,7 +86,7 @@ const SimulationControl = ({ position, stylization }) => {
                 onClose={closeControl}
                 stylization="control"
               >
-                <ShowUnitsList stylization="control-panel modal-theme" onClose={closeControl} />
+                <UnitsList stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
             </div>
           </div>
