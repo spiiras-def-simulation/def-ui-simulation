@@ -5,14 +5,14 @@ import { Marker } from 'react-leaflet';
 
 import './index.css';
 
-const MarkerPosition = ({ id, position, options }) => {
+const MarkerPosition = ({ position, number, options }) => {
   const { color = 'red' } = options;
   return (
     <Marker
       position={[position.x, position.y]}
       icon={L.divIcon({
         className: 'marker-position',
-        html: `<div class="marker-position-icon" style="background-color:${color}"><span>${id}</span></div>`
+        html: `<div class="marker-position-icon" style="background-color:${color}"><span>${number}</span></div>`
       })}
     />
   );
@@ -23,14 +23,14 @@ MarkerPosition.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number
   }).isRequired,
-  id: PropTypes.string,
+  number: PropTypes.string,
   options: PropTypes.shape({
     color: PropTypes.string
   })
 };
 
 MarkerPosition.defaultProps = {
-  id: '',
+  number: '',
   options: {}
 };
 

@@ -12,7 +12,7 @@ const GET_COMBAT_UNIT = gql`
         id
         name
       }
-      coordinates {
+      coordinates: globalPosition {
         x
         y
         z

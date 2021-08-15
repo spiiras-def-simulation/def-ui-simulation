@@ -1,13 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useQuery } from '@apollo/client';
 import Control from 'react-leaflet-control';
 
 import ControlPanel from '../ControlPanel';
 
+import { GET_MISSION_STATUS } from './requests';
+
 import './index.css';
 
+const dataFields = [
+  {
+    title: 'Макс. время на выполнение (с):',
+    type: 'number',
+    name: 'directiveTime',
+    placeholder: 'Неизвестно'
+  },
+  {
+    title: 'Гарантир. уровень выполнения ЦЗ (%):',
+    type: 'number',
+    name: 'successLevel',
+    placeholder: 'Неизвестно'
+  },
+  {
+    title: 'Гарантир. успех поражения ЦО (%):',
+    type: 'number',
+    name: 'strikeLevel',
+    placeholder: 'Неизвестно'
+  }
+];
+
 const MissionStatusControl = ({ stylization, position, opened }) => {
+  const { data } = useQuery(GET_MISSION_STATUS, { variables: { id: '175' } });
+
+  const { mission = null } = data || {};
   return (
     <Control position={position}>
       <ControlPanel
@@ -15,7 +42,22 @@ const MissionStatusControl = ({ stylization, position, opened }) => {
         title="Информация о боевой задаче"
         opened={opened}
       >
-        <div className="status-description"></div>
+        <div className="status-description">
+          <ul className="status-list">
+            {dataFields.map(({ title, type, name, placeholder }) => (
+              <li key={name} className="status-element">
+                <p>{title}</p>
+                <input
+                  type={type}
+                  name={name}
+                  disabled
+                  value={mission && mission[name] !== null ? mission[name] : ''}
+                  placeholder={placeholder}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </ControlPanel>
     </Control>
   );

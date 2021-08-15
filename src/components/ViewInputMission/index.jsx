@@ -3,7 +3,7 @@ import React, { useReducer, useCallback } from 'react';
 import ViewMap from '../ViewMap';
 import ReturnViewControl from '../ReturnViewControl';
 import InputMissionControl from '../InputMissionControl';
-import DateStatus from '../DateStatus';
+// import DateStatus from '../DateStatus';
 
 import Context from './context';
 import reducer from './reducer';
@@ -37,7 +37,7 @@ const ViewInputMission = () => {
       <ViewMap onClick={handleSetMapPoint}>
         <ReturnViewControl position="topleft" stylization="modal-theme" />
         <InputMissionControl position="topleft" stylization="modal-theme" />
-        <DateStatus position="topright" />
+        {/* <DateStatus position="topright" /> */}
         <InputMissionAreas />
         <InputMissionLocations />
       </ViewMap>

@@ -2,7 +2,7 @@ import React, { useReducer, useCallback } from 'react';
 
 import ViewMap from '../ViewMap';
 import ReturnViewControl from '../ReturnViewControl';
-import DateStatus from '../DateStatus';
+// import DateStatus from '../DateStatus';
 import InputGroundTargetsForm from '../InputGroundTargetsForm';
 import MarkerPosition from '../MarkerPosition';
 import GroundTargetObjectsLayer from '../GroundTargetObjectsLayer';
@@ -37,7 +37,7 @@ const ViewInputGroundTargets = () => {
       <ViewMap onClick={handleSetMapPoint}>
         <ReturnViewControl position="topleft" stylization="modal-theme" />
         <InputGroundTargetsForm position="topleft" stylization="modal-theme" />
-        <DateStatus position="topright" />
+        {/* <DateStatus position="topright" /> */}
         {location && <MarkerPosition position={location} options={{ color: 'green' }} />}
         {target && <MarkerPosition position={target} options={{ color: 'red' }} />}
         <GroundTargetObjectsLayer />

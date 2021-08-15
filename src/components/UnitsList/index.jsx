@@ -9,14 +9,6 @@ import { GET_COMBAT_UNITS } from './requests';
 
 import './index.css';
 
-// const units = [
-//   { id: 102, type: 'мультироторный', role: 'разведчик', status: 'active' },
-//   { id: 103, type: 'мультироторный', role: 'ударный', status: 'active' },
-//   { id: 104, type: 'самолёт', role: 'ударный', status: 'active' },
-//   { id: 105, type: 'самолёт', role: 'ударный', status: 'active' },
-//   { id: 106, type: 'мультироторный', role: 'ударный', status: 'active' }
-// ];
-
 const UnitsList = ({ stylization, onClose }) => {
   const { data } = useQuery(GET_COMBAT_UNITS);
 

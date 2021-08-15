@@ -12,14 +12,26 @@ const InputMissionLocations = () => {
   const { locations } = state;
   return (
     <FeatureGroup>
-      {locations[Types.DUMP_AMMO_POINT] && (
-        <MarkerPosition position={locations[Types.DUMP_AMMO_POINT]} options={{ color: 'green' }} />
-      )}
       {locations[Types.DEPARTURE_POINT] && (
-        <MarkerPosition position={locations[Types.DEPARTURE_POINT]} options={{ color: 'blue' }} />
+        <MarkerPosition
+          number="1"
+          position={locations[Types.DEPARTURE_POINT]}
+          options={{ color: 'blue' }}
+        />
+      )}
+      {locations[Types.DUMP_AMMO_POINT] && (
+        <MarkerPosition
+          number="2"
+          position={locations[Types.DUMP_AMMO_POINT]}
+          options={{ color: 'green' }}
+        />
       )}
       {locations[Types.LANDING_POINT] && (
-        <MarkerPosition position={locations[Types.LANDING_POINT]} options={{ color: 'red' }} />
+        <MarkerPosition
+          number="3"
+          position={locations[Types.LANDING_POINT]}
+          options={{ color: 'red' }}
+        />
       )}
     </FeatureGroup>
   );

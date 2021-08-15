@@ -1,9 +1,22 @@
 .mission-status-control {
   width: 260px;
-  display: flex;
-  flex-direction: column;
+  font-size: 13px;
 }
 
 .mission-status-control .status-description {
-  min-height: 200px;
+  padding: 6px 4px 10px 4px;
+}
+
+.mission-status-control .status-list .status-element {
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.mission-status-control .status-list .status-element:last-of-type {
+  margin-bottom: 0;
+}
+
+.mission-status-control .status-element input {
+  height: 26px;
+  width: 100%;
 }

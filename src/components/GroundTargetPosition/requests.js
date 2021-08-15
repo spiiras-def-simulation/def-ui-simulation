@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const GET_TARGET_POSITION = gql`
-  query GetTargetObjectPosition($id: ID!) {
+  query GetTargetPosition($id: ID!) {
     object: getTargetObject(id: $id) {
       id
       coordinates {
@@ -12,8 +12,8 @@ const GET_TARGET_POSITION = gql`
   }
 `;
 
-const SUBSCRIBE_TARGET_OBJECT_POSITION = gql`
-  subscription OnUpdateTargetObjectPosition($id: ID!) {
+const SUBSCRIBE_TARGET_POSITION = gql`
+  subscription OnUpdateTargetPosition($id: ID!) {
     object: onUpdateTargetObjectPosition(id: $id) {
       id
       coordinates {
@@ -24,4 +24,4 @@ const SUBSCRIBE_TARGET_OBJECT_POSITION = gql`
   }
 `;
 
-export { GET_TARGET_POSITION, SUBSCRIBE_TARGET_OBJECT_POSITION }; // eslint-disable-line
+export { GET_TARGET_POSITION, SUBSCRIBE_TARGET_POSITION }; // eslint-disable-line

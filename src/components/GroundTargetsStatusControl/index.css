@@ -1,7 +1,6 @@
 .ground-targets-status-control {
   width: 260px;
-  display: flex;
-  flex-direction: column;
+  font-size: 13px;
 }
 
 .ground-targets-status-control .status-description {

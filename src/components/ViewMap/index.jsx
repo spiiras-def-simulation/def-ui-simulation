@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Map as LeafletMap, TileLayer, Rectangle } from 'react-leaflet';
+import { Map as LeafletMap, LayersControl, TileLayer, Rectangle } from 'react-leaflet';
+
+import HeightMapLayer from '../HeightMapLayer';
 
 import Context from './context';
 import { getAreaBounds, getProjection } from './utils';
@@ -25,7 +27,14 @@ const ViewMap = ({ onClick, children }) => {
         maxBoundsViscosity={1.0}
         onClick={onClick}
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <LayersControl position="bottomright">
+          <LayersControl.BaseLayer checked name="Обычное представление">
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          </LayersControl.BaseLayer>
+          <LayersControl.BaseLayer name="Представление карты высот">
+            <HeightMapLayer />
+          </LayersControl.BaseLayer>
+        </LayersControl>
         {children}
         <Rectangle bounds={bounds} fill={false} />
       </LeafletMap>
