@@ -76,7 +76,10 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               type="number"
               name="rangeVelocityMin"
               placeholder="мин"
-              value={values.rangeVelocityMin || ''}
+              value={
+                values.rangeVelocityMin ||
+                (values.rangeVelocityMin === 0 ? values.rangeVelocityMin : '')
+              }
               onChange={handleInputNumber}
             />
             <input
@@ -84,7 +87,10 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               type="number"
               name="rangeVelocityMax"
               placeholder="макс"
-              value={values.rangeVelocityMax || ''}
+              value={
+                values.rangeVelocityMax ||
+                (values.rangeVelocityMax === 0 ? values.rangeVelocityMax : '')
+              }
               onChange={handleInputNumber}
             />
           </div>
@@ -97,7 +103,10 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               type="number"
               name="rangeVelocityUpVerticalMin"
               placeholder="мин"
-              value={values.rangeVelocityUpVerticalMin || ''}
+              value={
+                values.rangeVelocityUpVerticalMin ||
+                (values.rangeVelocityUpVerticalMin === 0 ? values.rangeVelocityUpVerticalMin : '')
+              }
               onChange={handleInputNumber}
             />
             <input
@@ -105,7 +114,10 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               type="number"
               name="rangeVelocityUpVerticalMax"
               placeholder="макс"
-              value={values.rangeVelocityUpVerticalMax || ''}
+              value={
+                values.rangeVelocityUpVerticalMax ||
+                (values.rangeVelocityUpVerticalMax === 0 ? values.rangeVelocityUpVerticalMax : '')
+              }
               onChange={handleInputNumber}
             />
           </div>
@@ -118,7 +130,12 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               type="number"
               name="rangeVelocityDownVerticalMin"
               placeholder="мин"
-              value={values.rangeVelocityDownVerticalMin || ''}
+              value={
+                values.rangeVelocityDownVerticalMin ||
+                (values.rangeVelocityDownVerticalMin === 0
+                  ? values.rangeVelocityDownVerticalMin
+                  : '')
+              }
               onChange={handleInputNumber}
             />
             <input
@@ -126,7 +143,12 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
               type="number"
               name="rangeVelocityDownVerticalMax"
               placeholder="макс"
-              value={values.rangeVelocityDownVerticalMax || ''}
+              value={
+                values.rangeVelocityDownVerticalMax ||
+                (values.rangeVelocityDownVerticalMax === 0
+                  ? values.rangeVelocityDownVerticalMax
+                  : '')
+              }
               onChange={handleInputNumber}
             />
           </div>
@@ -149,7 +171,10 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
             type="number"
             name="maxCargoQuantity"
             placeholder="макс"
-            value={values.maxCargoQuantity || ''}
+            value={
+              values.maxCargoQuantity ||
+              (values.maxCargoQuantity === 0 ? values.maxCargoQuantity : '')
+            }
             onChange={handleInputNumber}
           />
         </li>
@@ -160,7 +185,22 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
             type="number"
             name="maxFuelConsume"
             placeholder="макс"
-            value={values.maxFuelConsume || ''}
+            value={
+              values.maxFuelConsume || (values.maxFuelConsume === 0 ? values.maxFuelConsume : '')
+            }
+            onChange={handleInputNumber}
+          />
+        </li>
+        <li className="form-input">
+          <p>Ресурс топлива (ч):</p>
+          <input
+            className="input-field"
+            type="number"
+            name="maxFuelResourse"
+            placeholder="макс"
+            value={
+              values.maxFuelResourse || (values.maxFuelResourse === 0 ? values.maxFuelResourse : '')
+            }
             onChange={handleInputNumber}
           />
         </li>
@@ -171,7 +211,10 @@ const InputUnitTypeForm = ({ stylization, onClose }) => {
             type="number"
             name="maxTurningRadius"
             placeholder="макс"
-            value={values.maxTurningRadius || ''}
+            value={
+              values.maxTurningRadius ||
+              (values.maxTurningRadius === 0 ? values.maxTurningRadius : '')
+            }
             onChange={handleInputNumber}
           />
         </li>

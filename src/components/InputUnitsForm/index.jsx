@@ -31,7 +31,10 @@ const InputUnitsForm = ({ position, stylization }) => {
   const handleSubmitUnits = useCallback(() => {
     const { units, location, ...inputValues } = values;
 
-    inputValues.units = Object.values(units).map(({ role, number }) => ({ role, number }));
+    inputValues.units = Object.values(units).map(({ role, number }) => ({
+      role,
+      number: parseInt(number, 10)
+    }));
     inputValues.location = projection.unproject(location);
 
     addUnits({ variables: { input: inputValues } });

@@ -1,5 +1,6 @@
 .units-list {
   min-width: 260px;
+  min-height: 200px;
   max-height: 240px;
   display: flex;
   flex-direction: column;

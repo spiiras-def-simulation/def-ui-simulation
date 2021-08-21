@@ -2,6 +2,7 @@ import React, { useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useMutation } from '@apollo/client';
+import L from 'leaflet';
 import Control from 'react-leaflet-control';
 
 import ControlPanel from '../ControlPanel';
@@ -42,7 +43,13 @@ const InputMissionControl = ({ position, stylization }) => {
     const { params, areas, locations, units } = state;
 
     const inputValues = { ...params, ...locations };
-    inputValues.scoutingArea = areas.scoutingArea.data;
+
+    const scoutingCoordinates = areas.scoutingArea.data.geometry.coordinates[0];
+    const scoutingLatLngs = L.GeoJSON.coordsToLatLngs(scoutingCoordinates);
+    const scoutingBounds = L.latLngBounds(scoutingLatLngs);
+    const scoutingArea = L.rectangle(scoutingBounds);
+    inputValues.scoutingArea = scoutingArea.toGeoJSON();
+
     inputValues.uavs = units.uavs;
     inputValues.successLevel = parseInt(params.successLevel, 10) / 100;
     inputValues.strikeLevel = parseInt(params.strikeLevel, 10) / 100;

@@ -33,13 +33,13 @@ const inputs = [
     type: 'number',
     name: 'successLevel',
     placeholder: 0
-  },
-  {
-    title: 'Гарантир. успех поражения ЦО (%):',
-    type: 'number',
-    name: 'strikeLevel',
-    placeholder: 0
   }
+  // {
+  //   title: 'Гарантир. успех поражения ЦО (%):',
+  //   type: 'number',
+  //   name: 'strikeLevel',
+  //   placeholder: 0
+  // }
 ];
 
 const InputMissionForm = ({ stylization, onClose }) => {

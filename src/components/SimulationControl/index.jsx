@@ -76,7 +76,7 @@ const SimulationControl = ({ position, stylization }) => {
                 name={Controls.INPUT_UNITS}
                 label="Добавить БпЛА"
                 stylization="control"
-                reference="/operation/input/units"
+                reference="/input/units"
               />
               <StateControl
                 name={Controls.SHOW_UNITS_LIST}
@@ -99,7 +99,7 @@ const SimulationControl = ({ position, stylization }) => {
                 name={Controls.INPUT_GROUND_TARGETS}
                 label="Добавить наземные цели"
                 stylization="control"
-                reference="/operation/input/targets"
+                reference="/input/targets"
               />
               <StateControl
                 name={Controls.SHOW_GROUND_TARGETS_LIST}
@@ -135,7 +135,7 @@ const SimulationControl = ({ position, stylization }) => {
                 name={Controls.INPUT_LOCATION}
                 label="Ввод параметров местности"
                 stylization="control"
-                reference="/operation/input/location"
+                reference="/input/location"
               />
             </div>
           </div>
@@ -148,7 +148,7 @@ const SimulationControl = ({ position, stylization }) => {
                 name={Controls.INPUT_MISSION}
                 label="Ввод боевого задания"
                 stylization="control"
-                reference="/operation/input/mission"
+                reference="/input/mission"
               />
             </div>
           </div>

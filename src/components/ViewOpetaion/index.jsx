@@ -1,27 +1,35 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 
-import ViewMap from '../ViewMap';
-import WeatherStatus from '../WeatherStatus';
-// import DateStatus from '../DateStatus';
-import MissionStatusControl from '../MissionStatusControl';
-import UnitsGroupStatusControl from '../UnitsGroupStatusControl';
-import GroundTargetsStatusControl from '../GroundTargetsStatusControl';
-// import UnitStatusControl from '../UnitStatusControl';
-import MissionStatusLocations from '../MissionStatusLocations';
-import UnitsGroupObjects from '../UnitsGroupObjects';
+import ViewOperationLaunched from '../ViewOperaionLaunched';
+import ViewOperationСonfirmation from '../ViewOperationConfirmation';
+
+import { GET_LAUNCHED_MISSION } from './requests';
 
 const ViewOperation = () => {
+  const { data, loading, error } = useQuery(GET_LAUNCHED_MISSION);
+  const match = useRouteMatch();
+
+  if (loading || error) return null;
+
+  const isLaunched = !!data.mission;
   return (
-    <ViewMap>
-      {/* <DateStatus position="topleft" /> */}
-      <WeatherStatus position="topleft" />
-      <MissionStatusControl stylization="modal-theme" position="topleft" opened />
-      <UnitsGroupStatusControl stylization="modal-theme" position="topleft" opened={false} />
-      <GroundTargetsStatusControl stylization="modal-theme" position="topright" opened={false} />
-      {/* <UnitStatusControl stylization="modal-theme" position="topright" opened={false} /> */}
-      <MissionStatusLocations />
-      <UnitsGroupObjects />
-    </ViewMap>
+    <Switch>
+      <Route exact path={match.path}>
+        {isLaunched ? (
+          <Redirect to={`${match.path}/launched`} />
+        ) : (
+          <Redirect to={`${match.path}/confirm`} />
+        )}
+      </Route>
+      <Route path={`${match.path}/launched`}>
+        {isLaunched ? <ViewOperationLaunched /> : <Redirect to="/operation/confirm" />}
+      </Route>
+      <Route path={`${match.path}/confirm`}>
+        <ViewOperationСonfirmation />
+      </Route>
+    </Switch>
   );
 };
 

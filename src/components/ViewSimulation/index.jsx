@@ -5,6 +5,7 @@ import SimulationControl from '../SimulationControl';
 import WeatherStatus from '../WeatherStatus';
 // import DateStatus from '../DateStatus';
 // import EventsTimeline from '../EventsTimeline';
+import CombatLocations from '../CombatLocations';
 
 import GroundTargetObjectsLayer from '../GroundTargetObjectsLayer';
 
@@ -16,6 +17,7 @@ const ViewSimulation = () => {
       <WeatherStatus position="topright" />
       {/* <EventsTimeline position="topright" /> */}
       <GroundTargetObjectsLayer />
+      <CombatLocations />
     </ViewMap>
   );
 };

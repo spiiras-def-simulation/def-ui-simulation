@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { FeatureGroup } from 'react-leaflet';
 
 import UnitScoutObjectWithData from '../UnitScoutObjectWithData';
-// import UnitStrikeObjectWithData from '../UnitStrikeObjectWithData';
+import UnitStrikeObjectWithData from '../UnitStrikeObjectWithData';
 
 import { GET_UNITS_GROUP_OBJECTS } from './requests';
 
@@ -23,11 +23,11 @@ const UnitsGroupObjects = () => {
           .map(({ id }) => (
             <UnitScoutObjectWithData key={id} id={id} />
           ))}
-        {/* {mission.units
+        {mission.units
           .filter(unit => unit.role && unit.role.name === 'Ударный')
           .map(({ id }) => (
             <UnitStrikeObjectWithData key={id} id={id} />
-          ))} */}
+          ))}
       </FeatureGroup>
     )
   );

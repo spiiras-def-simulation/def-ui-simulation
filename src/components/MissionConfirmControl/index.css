@@ -1,0 +1,60 @@
+.mission-confirm-control {
+  width: 260px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-confirm-control .control-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid grey;
+}
+
+.mission-confirm-control .control-title .title {
+  flex-grow: 1;
+}
+
+.mission-confirm-control .control-title .close-button {
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+.mission-confirm-control .control-title .close-button:hover {
+  cursor: pointer;
+}
+
+.mission-confirm-control .status-list {
+  padding: 0 10px 10px 10px;
+}
+
+.mission-confirm-control .status-list .status-element {
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.mission-confirm-control .status-list .status-element:last-of-type {
+  margin-bottom: 0;
+}
+
+.mission-confirm-control .status-element input {
+  height: 26px;
+  width: 100%;
+}
+
+.mission-confirm-control .confirm-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.mission-confirm-control .confirm-buttons .confirm-button {
+  width: 90px;
+  margin-left: 2px;
+  margin-right: 2px;
+}

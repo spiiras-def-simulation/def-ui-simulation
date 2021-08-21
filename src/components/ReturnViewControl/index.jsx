@@ -8,7 +8,7 @@ import './index.css';
 
 const ReturnViewControl = ({ position, stylization }) => (
   <Control position={position}>
-    <Link to="/operation/control" className={classNames('return-view-control', stylization)}>
+    <Link to="/control" className={classNames('return-view-control', stylization)}>
       <i className="fas fa-eye" />
       <span>Вернуться к наблюдению</span>
     </Link>
