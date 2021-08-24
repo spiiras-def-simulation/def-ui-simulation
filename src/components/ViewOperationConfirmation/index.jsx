@@ -5,6 +5,7 @@ import WeatherStatus from '../WeatherStatus';
 import MissionsListControl from '../MissionsListControl';
 import MissionConfirmControl from '../MissionConfirmControl';
 import MissionStatusLocations from '../MissionStatusLocations';
+import ReMissionControl from '../ReMissionControl';
 
 const ViewOperationСonfirmation = () => {
   const [mission, setMission] = useState(null);
@@ -25,6 +26,7 @@ const ViewOperationСonfirmation = () => {
           onClose={() => setMission(null)}
         />
       )}
+      {mission && <ReMissionControl id={mission} position="topright" stylization="modal-theme" />}
       {mission && <MissionStatusLocations id={mission} />}
     </ViewMap>
   );

@@ -10,11 +10,8 @@ const GET_MISSION_STATUS = gql`
       successLevel
       strikeLevel
 
-      uavs {
+      units: uavs {
         id
-        role {
-          name
-        }
       }
 
       accomplished

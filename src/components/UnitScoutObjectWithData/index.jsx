@@ -16,13 +16,14 @@ const UnitScoutObjectWithData = ({ id }) => {
 
   if (result.loading || result.error) return null;
 
-  const { coordinates, detectionRadius } = result.data.object;
+  const { coordinates, detectionRadius, path } = result.data.object;
   return (
     <UnitScoutObject
       id={id}
       // position={getPosition(coordinates, projection.project)}
       position={coordinates}
       detectionRadius={detectionRadius}
+      path={path}
       subToUpdate={() => {
         subscribeToMore({
           document: SUBSCRIBE_UNIT_POSITION,

@@ -14,9 +14,6 @@ import MissionStatus from '../ViewOperationConfirmation/MissionStatus';
 import './index.css';
 
 const groupsElementData = {
-  REGISTRED: {
-    title: 'Добавленны:'
-  },
   ANALYSED: {
     title: 'Прошли целеполагание:'
   },

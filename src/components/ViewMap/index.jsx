@@ -14,7 +14,6 @@ const ViewMap = ({ onClick, children }) => {
   const center = useMemo(() => [42.63313293457031, 45.16509478442965], []);
   const bounds = useMemo(() => getAreaBounds(center, 30000), [center]);
   const projection = useMemo(() => getProjection(center, 1), [center]);
-
   return (
     <Context.Provider value={{ projection }}>
       <LeafletMap

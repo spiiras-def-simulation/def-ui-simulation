@@ -9,6 +9,7 @@ import ControlPanel from '../ControlPanel';
 import ControlsBlock from '../ControlsBlock';
 import StateControl from '../StateControl';
 import InputMissionForm from '../InputMissionForm';
+import InputKnownTargetsForm from '../InputKnownTargetsForm';
 import InputUnitsGroupForm from '../InputUnitsGroupForm';
 import InputMissionLocationControls from '../InputMissionLocationControls';
 import PrimaryButton from '../PrimaryButton';
@@ -23,6 +24,7 @@ import './index.css';
 
 const Controls = {
   MISSION_PARAMS: 'missionParams',
+  MISSION_TARGETS: 'missionTargets',
   MISSION_UNITS: 'missionUnits'
 };
 
@@ -40,7 +42,7 @@ const InputMissionControl = ({ position, stylization }) => {
     [dispatch]
   );
   const handleSubmitMission = useCallback(() => {
-    const { params, areas, locations, units } = state;
+    const { params, targets, areas, locations, units } = state;
 
     const inputValues = { ...params, ...locations };
 
@@ -53,6 +55,9 @@ const InputMissionControl = ({ position, stylization }) => {
     inputValues.uavs = units.uavs;
     inputValues.successLevel = parseInt(params.successLevel, 10) / 100;
     inputValues.strikeLevel = parseInt(params.strikeLevel, 10) / 100;
+
+    inputValues.targetsNumber = targets.length;
+    inputValues.targetsCoordinates = targets.map(({ coordinates }) => coordinates);
 
     addMission({ variables: { input: inputValues } });
   }, [state, addMission]);
@@ -81,6 +86,19 @@ const InputMissionControl = ({ position, stylization }) => {
                       stylization="control"
                     >
                       <InputMissionForm
+                        stylization="control-panel modal-theme"
+                        onClose={closeActive}
+                      />
+                    </StateControl>
+                    <StateControl
+                      name={Controls.MISSION_TARGETS}
+                      label="Ввод известных целей"
+                      active={Controls.MISSION_TARGETS === active}
+                      onChoose={setActive}
+                      onClose={closeActive}
+                      stylization="control"
+                    >
+                      <InputKnownTargetsForm
                         stylization="control-panel modal-theme"
                         onClose={closeActive}
                       />

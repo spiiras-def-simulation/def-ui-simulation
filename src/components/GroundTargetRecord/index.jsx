@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useQuery } from '@apollo/client';
 
+import PointRecord from '../PointRecord';
+
 import MapContext from '../ViewMap/context';
 
 import { GET_TARGET_OBJECT } from './requests';
@@ -25,8 +27,7 @@ const GroundTargetRecord = ({ id, stylization }) => {
       </div>
       {coordinates && (
         <div className="record-descriptor">
-          <p className="descriptor-coordinate">Долгота: {coordinates.y}</p>
-          <p className="descriptor-coordinate">Широта: {coordinates.x}</p>
+          <PointRecord point={coordinates} />
         </div>
       )}
     </div>

@@ -28,8 +28,10 @@
   cursor: pointer;
 }
 
-.mission-confirm-control .status-list {
-  padding: 0 10px 10px 10px;
+.mission-confirm-control .control-content .status-list {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 8px;
 }
 
 .mission-confirm-control .status-list .status-element {
@@ -44,6 +46,18 @@
 .mission-confirm-control .status-element input {
   height: 26px;
   width: 100%;
+}
+
+.mission-confirm-control .units-group {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 8px;
+}
+
+.mission-confirm-control .units-group .unit-type-elements {
+  overflow: auto;
+  max-height: 100px;
+  padding-left: 8px;
 }
 
 .mission-confirm-control .confirm-buttons {

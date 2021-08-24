@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useQuery } from '@apollo/client';
 
+import PointRecord from '../PointRecord';
+
 import { GET_COMBAT_UNIT } from './requests';
 
 import './index.css';
@@ -26,9 +28,8 @@ const UnitRecord = ({ id, stylization }) => {
         )}
       </div>
       {coordinates && (
-        <div className="record-descriptor record-coordinates">
-          <p className="descriptor-coordinate">Долгота: {coordinates.y}</p>
-          <p className="descriptor-coordinate">Широта: {coordinates.x}</p>
+        <div className="record-descriptor">
+          <PointRecord point={coordinates} />
         </div>
       )}
       {telemetry && <div className="record-telemetry"></div>}

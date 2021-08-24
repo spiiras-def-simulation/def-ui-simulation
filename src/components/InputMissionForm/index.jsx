@@ -58,7 +58,7 @@ const InputMissionForm = ({ stylization, onClose }) => {
   );
 
   const setMissionParams = useCallback(() => {
-    dispatch({ type: events.SET_MISSION_PARAMS, data: values });
+    dispatch({ type: events.SET_MISSION_PARAMS, data: { ...values } });
   }, [values, dispatch]);
 
   return (

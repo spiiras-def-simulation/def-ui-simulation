@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { useQuery, useMutation } from '@apollo/client';
 import Control from 'react-leaflet-control';
 
+import UnitRecord from '../UnitRecord';
 import PrimaryButton from '../PrimaryButton';
 
 import MissionStatus from '../ViewOperationConfirmation/MissionStatus';
@@ -40,12 +41,10 @@ const dataFields = [
 ];
 
 const MissionConfirmControl = ({ id, position, stylization, onClose }) => {
-  const { data, loading, error } = useQuery(GET_MISSION_STATUS, { variables: { id } });
+  const { data } = useQuery(GET_MISSION_STATUS, { variables: { id } });
   const [confirmMission] = useMutation(CONFIRM_MISSION, { variables: { id } });
 
-  if (loading || error) return null;
-
-  const { mission } = data;
+  const { mission = null } = data || {};
   return (
     <Control position={position}>
       <div className={classNames('mission-confirm-control', stylization)}>
@@ -55,41 +54,53 @@ const MissionConfirmControl = ({ id, position, stylization, onClose }) => {
             <i className="fa fa-times" aria-hidden="true"></i>
           </button>
         </div>
-        <ul className="status-list">
-          {dataFields.map(({ title, type, name, placeholder }) =>
-            name === 'accomplished' ? (
-              mission.status !== MissionStatus.REGISTRED && (
-                <li key={name} className="status-element">
-                  <p>{title}</p>
-                  <input
-                    type={type}
-                    name={name}
-                    disabled
-                    value={mission && mission[name] ? 'Миссия выполнима' : 'Миссия невыполнима'}
-                    placeholder={placeholder}
-                  />
-                </li>
-              )
-            ) : (
-              <li key={name} className="status-element">
-                <p>{title}</p>
-                <input
-                  type={type}
-                  name={name}
-                  disabled
-                  value={mission && mission[name] !== null ? mission[name] : ''}
-                  placeholder={placeholder}
-                />
-              </li>
-            )
-          )}
-        </ul>
-        {mission.status === MissionStatus.ANALYSED && (
-          <div className="confirm-buttons">
-            <PrimaryButton stylization="confirm-button" onClick={confirmMission}>
-              Выполнить
-            </PrimaryButton>
-            <PrimaryButton stylization="confirm-button">Отказать</PrimaryButton>
+        {mission && (
+          <div className="control-content">
+            <ul className="status-list">
+              {dataFields.map(({ title, type, name, placeholder }) =>
+                name === 'accomplished' ? (
+                  mission.status !== MissionStatus.REGISTRED && (
+                    <li key={name} className="status-element">
+                      <p>{title}</p>
+                      <input
+                        type={type}
+                        name={name}
+                        disabled
+                        value={mission && mission[name] ? 'Миссия выполнима' : 'Миссия невыполнима'}
+                        placeholder={placeholder}
+                      />
+                    </li>
+                  )
+                ) : (
+                  <li key={name} className="status-element">
+                    <p>{title}</p>
+                    <input
+                      type={type}
+                      name={name}
+                      disabled
+                      value={mission && mission[name] !== null ? mission[name] : ''}
+                      placeholder={placeholder}
+                    />
+                  </li>
+                )
+              )}
+            </ul>
+            <div className="units-group">
+              <div className="units-group-title">Боевая группа:</div>
+              <div className="unit-type-elements">
+                {mission.units.map(unit => (
+                  <UnitRecord key={unit.id} stylization="unit-group-element" id={unit.id} />
+                ))}
+              </div>
+            </div>
+            {mission.status === MissionStatus.ANALYSED && (
+              <div className="confirm-buttons">
+                <PrimaryButton stylization="confirm-button" onClick={confirmMission}>
+                  Выполнить
+                </PrimaryButton>
+                <PrimaryButton stylization="confirm-button">Отказать</PrimaryButton>
+              </div>
+            )}
           </div>
         )}
       </div>

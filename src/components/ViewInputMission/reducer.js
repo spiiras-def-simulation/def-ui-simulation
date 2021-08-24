@@ -4,6 +4,10 @@ const handleSetMissionParams = (prevState, data) => {
   return { ...prevState, params: { ...data } };
 };
 
+const handleSetMissionTargets = (prevState, data) => {
+  return { ...prevState, targets: data };
+};
+
 const handleChangeScoutGroupRole = (prevState, data) => {
   const nextState = { ...prevState };
   nextState.units.scoutRole = data;
@@ -64,6 +68,7 @@ const handleRemoveAreaObjects = prevState => {
 
 const handlers = new Map([
   [events.SET_MISSION_PARAMS, handleSetMissionParams],
+  [events.SET_MISSION_TARGETS, handleSetMissionTargets],
   [events.CHANGE_SCOUT_GROUP_ROLE, handleChangeScoutGroupRole],
   [events.CHANGE_STRIKE_GROUP_ROLE, handleChangeStrikeGroupRole],
   [events.SET_UNIT_GROUP, handleSetUnitGroup],

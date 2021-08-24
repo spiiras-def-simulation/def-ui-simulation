@@ -1,0 +1,40 @@
+.detected-target-record {
+  display: flex;
+  flex-direction: column;
+}
+
+.detected-target-record .record-header {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.detected-target-record .record-header .header-element {
+  margin-right: 4px;
+}
+
+.detected-target-record .record-header .show-button {
+  color: blue;
+}
+
+.detected-target-record .record-header .strike-button {
+  color: red;
+}
+
+.detected-target-record .record-header button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.detected-target-record .record-descriptor {
+  padding-left: 8px;
+}
+
+.detected-target-record .record-descriptor .descriptor-coordinate {
+  height: 20px;
+}
+
+.detected-target-record .image {
+  width: 100%;
+}

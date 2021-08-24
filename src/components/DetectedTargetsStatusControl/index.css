@@ -1,0 +1,13 @@
+.ground-targets-status-control {
+  width: 260px;
+  font-size: 13px;
+}
+
+.ground-targets-status-control .status-detected-list {
+  overflow: auto;
+  padding-top: 4px;
+  padding-bottom: 8px;
+  padding-right: 4px;
+  min-height: 200px;
+  max-height: 500px;
+}

@@ -5,10 +5,10 @@ import ViewMap from '../ViewMap';
 import WeatherStatus from '../WeatherStatus';
 import MissionStatusControl from '../MissionStatusControl';
 import UnitsGroupStatusControl from '../UnitsGroupStatusControl';
-import GroundTargetsStatusControl from '../GroundTargetsStatusControl';
-// import UnitStatusControl from '../UnitStatusControl';
+import DetectedTargetsStatusControl from '../DetectedTargetsStatusControl';
 import MissionStatusLocations from '../MissionStatusLocations';
 import UnitsGroupObjects from '../UnitsGroupObjects';
+import DetectedTargetObjectsWithData from '../DetectedTargetObjectsWithData';
 
 import { GET_LAUNCHED_MISSION } from './requests';
 
@@ -17,19 +17,17 @@ const ViewOperationLaunched = () => {
 
   if (loading || error) return null;
 
-  const { mission } = data;
+  const { id } = data.mission;
   return (
-    mission && (
-      <ViewMap>
-        <WeatherStatus position="topleft" />
-        <MissionStatusControl stylization="modal-theme" position="topleft" opened />
-        <UnitsGroupStatusControl stylization="modal-theme" position="topleft" opened={false} />
-        <GroundTargetsStatusControl stylization="modal-theme" position="topright" opened={false} />
-        {/* <UnitStatusControl stylization="modal-theme" position="topright" opened={false} /> */}
-        <MissionStatusLocations id="175" />
-        <UnitsGroupObjects id="175" />
-      </ViewMap>
-    )
+    <ViewMap>
+      <WeatherStatus position="topleft" />
+      <MissionStatusControl stylization="modal-theme" position="topleft" opened />
+      <UnitsGroupStatusControl stylization="modal-theme" position="topleft" opened={false} />
+      <DetectedTargetsStatusControl stylization="modal-theme" position="topright" opened={false} />
+      <MissionStatusLocations id={id} />
+      <UnitsGroupObjects id={id} />
+      <DetectedTargetObjectsWithData />
+    </ViewMap>
   );
 };
 

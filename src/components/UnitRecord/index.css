@@ -19,9 +19,9 @@
 }
 
 .unit-record .record-descriptor {
-  padding-left: 6px;
+  padding-left: 8px;
 }
 
-.unit-record .record-coordinates .descriptor-coordinate {
+.unit-record .record-descriptor .descriptor-coordinate {
   height: 20px;
 }
