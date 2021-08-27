@@ -6,11 +6,10 @@ import DetectedTargetRecord from '../DetectedTargetRecord';
 
 const DetectedTargetsList = ({ objects, stylization, subToUpdate }) => {
   useEffect(() => subToUpdate(), [subToUpdate]);
-
   return (
     <div className={classNames('detected-targets-list', stylization)}>
-      {objects.map(({ id }) => (
-        <DetectedTargetRecord key={id} id={id} stylization="list-element" />
+      {objects.map(({ id }, number) => (
+        <DetectedTargetRecord key={id} id={id} number={number + 1} stylization="list-element" />
       ))}
     </div>
   );

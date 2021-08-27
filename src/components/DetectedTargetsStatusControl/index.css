@@ -1,13 +1,31 @@
-.ground-targets-status-control {
+.detected-targets-status-control {
   width: 260px;
   font-size: 13px;
 }
 
-.ground-targets-status-control .status-detected-list {
+.detected-targets-status-control .control-content {
+  min-height: 160px;
+}
+
+.detected-targets-status-control .control-content .detected-controls {
+  height: 24px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.detected-targets-status-control .detected-controls button {
+  color: red;
+  margin-right: 4px;
+}
+
+.detected-targets-status-control .detected-controls button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.detected-targets-status-control .control-content .detected-list {
   overflow: auto;
-  padding-top: 4px;
   padding-bottom: 8px;
   padding-right: 4px;
-  min-height: 200px;
-  max-height: 500px;
+  max-height: 200px;
 }

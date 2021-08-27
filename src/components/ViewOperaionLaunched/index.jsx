@@ -2,12 +2,12 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 
 import ViewMap from '../ViewMap';
-import WeatherStatus from '../WeatherStatus';
 import MissionStatusControl from '../MissionStatusControl';
 import UnitsGroupStatusControl from '../UnitsGroupStatusControl';
 import DetectedTargetsStatusControl from '../DetectedTargetsStatusControl';
 import MissionStatusLocations from '../MissionStatusLocations';
-import UnitsGroupObjects from '../UnitsGroupObjects';
+import UnitsGroupObjectsWithData from '../UnitsGroupObjectsWithData';
+import UnitsGroupPath from '../UnitsGroupPath';
 import DetectedTargetObjectsWithData from '../DetectedTargetObjectsWithData';
 
 import { GET_LAUNCHED_MISSION } from './requests';
@@ -20,13 +20,13 @@ const ViewOperationLaunched = () => {
   const { id } = data.mission;
   return (
     <ViewMap>
-      <WeatherStatus position="topleft" />
       <MissionStatusControl stylization="modal-theme" position="topleft" opened />
       <UnitsGroupStatusControl stylization="modal-theme" position="topleft" opened={false} />
       <DetectedTargetsStatusControl stylization="modal-theme" position="topright" opened={false} />
       <MissionStatusLocations id={id} />
-      <UnitsGroupObjects id={id} />
+      <UnitsGroupPath id={id} />
       <DetectedTargetObjectsWithData />
+      <UnitsGroupObjectsWithData />
     </ViewMap>
   );
 };

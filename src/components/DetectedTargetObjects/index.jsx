@@ -10,7 +10,7 @@ const DetectedTargetObjects = ({ objects, subToUpdate }) => {
   return (
     <FeatureGroup>
       {objects.map(({ id }) => (
-        <GroundTargetPosition key={id} id={id} isGlobal />
+        <GroundTargetPosition key={id} id={id} />
       ))}
     </FeatureGroup>
   );

@@ -15,6 +15,7 @@ const DetectedTargetsListWithData = ({ stylization }) => {
   return (
     <DetectedTargetsList
       objects={objects.filter(({ status }) => status === 'DETECTED')}
+      // objects={objects}
       stylization={stylization}
       subToUpdate={() => {
         subscribeToMore({
@@ -23,6 +24,7 @@ const DetectedTargetsListWithData = ({ stylization }) => {
             if (!subscriptionData.data) return prev;
             const { objects: updated } = subscriptionData.data;
             return { objects: updated.filter(({ status }) => status === 'DETECTED') };
+            // return { objects: updated };
           }
         });
       }}

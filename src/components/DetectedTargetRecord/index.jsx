@@ -11,28 +11,25 @@ import { GET_TARGET_OBJECT } from './requests';
 
 import './index.css';
 
-const DetectedTargetRecord = ({ id, stylization }) => {
+const DetectedTargetRecord = ({ id, number, stylization }) => {
   const { projection } = useContext(MapContext);
   const [showImage, setShowImage] = useState(false);
   const { data, loading, error } = useQuery(GET_TARGET_OBJECT, { variables: { id } });
 
   if (loading || error) return null;
 
-  const { type, image } = data.object;
+  const { image } = data.object;
   const coordinates = data.object.coordinates ? projection.project(data.object.coordinates) : null;
   return (
     <div className={classNames('detected-target-record', stylization)}>
       <div className="record-header">
-        <span className="header-element">{type}</span>
+        <span className="header-element">Цель атаки {number !== null ? number : ''}</span>
         <button
           type="button"
           onClick={() => setShowImage(!showImage)}
           className="show-button header-element"
         >
           Показать
-        </button>
-        <button type="button" className="strike-button header-element">
-          Уничтожить
         </button>
       </div>
       {coordinates && (
@@ -49,10 +46,12 @@ const DetectedTargetRecord = ({ id, stylization }) => {
 
 DetectedTargetRecord.propTypes = {
   id: PropTypes.string.isRequired,
+  number: PropTypes.number,
   stylization: PropTypes.string
 };
 
 DetectedTargetRecord.defaultProps = {
+  number: null,
   stylization: ''
 };
 

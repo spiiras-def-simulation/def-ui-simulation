@@ -15,12 +15,12 @@ const UnitRecord = ({ id, stylization }) => {
   if (loading || error) return null;
 
   const {
-    unit: { role, type, coordinates, telemetry }
+    unit: { role, type, coordinates }
   } = data;
   return (
     <div className={classNames('unit-record', stylization)}>
       <div className="record-header">
-        <span>ID {id}</span>
+        <span>№ {id}</span>
         {role && (
           <span>
             , {role.name} ({type.name})
@@ -32,7 +32,6 @@ const UnitRecord = ({ id, stylization }) => {
           <PointRecord point={coordinates} />
         </div>
       )}
-      {telemetry && <div className="record-telemetry"></div>}
     </div>
   );
 };

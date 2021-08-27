@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 const GET_UNITS_GROUP_STATUS = gql`
-  query GetUnitsGroupStatus($missionId: ID!) {
-    mission: getCombatMission(id: $missionId) {
+  query GetUnitsGroupStatus {
+    mission: getLaunchedCombatMission {
       id
       units: uavs {
         id

@@ -18,10 +18,6 @@
   color: blue;
 }
 
-.detected-target-record .record-header .strike-button {
-  color: red;
-}
-
 .detected-target-record .record-header button:hover {
   cursor: pointer;
   text-decoration: underline;

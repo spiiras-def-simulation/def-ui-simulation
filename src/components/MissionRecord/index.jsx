@@ -19,7 +19,6 @@ const MissionRecord = ({ mission, stylization, onShow }) => {
   const mapStatusRecord = useMemo(
     () =>
       new Map([
-        [MissionStatus.REGISTRED, `${id}. Ждёт целеполагания.`],
         [MissionStatus.ANALYSED, `${id}. ${accomplished ? 'Выполнима.' : 'Невыполнима.'}`],
         [MissionStatus.LAUNCHED, `${id}. Займёт ${strHourTime(directiveTime / 3600)}`],
         [MissionStatus.REJECTED, `${id}. ${accomplished ? 'Выполнима.' : 'Невыполнима.'}`],

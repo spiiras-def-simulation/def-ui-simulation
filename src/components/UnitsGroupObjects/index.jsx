@@ -1,36 +1,47 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { FeatureGroup } from 'react-leaflet';
 
 import UnitScoutObjectWithData from '../UnitScoutObjectWithData';
 import UnitStrikeObjectWithData from '../UnitStrikeObjectWithData';
 
-import { GET_UNITS_GROUP_OBJECTS } from './requests';
-
-const UnitsGroupObjects = () => {
-  const { data, error, loading } = useQuery(GET_UNITS_GROUP_OBJECTS, {
-    variables: { missionId: '175' }
-  });
-
-  if (error || loading) return null;
-
-  const { mission } = data;
+const UnitsGroupObjects = ({ objects, subToUpdate }) => {
+  useEffect(() => subToUpdate(), [subToUpdate]);
   return (
-    mission && (
+    objects && (
       <FeatureGroup>
-        {mission.units
+        {objects
           .filter(unit => unit.role && unit.role.name === 'Разведчик')
+          .filter(unit => unit.status !== 'LOST')
           .map(({ id }) => (
             <UnitScoutObjectWithData key={id} id={id} />
           ))}
-        {mission.units
+        {objects
           .filter(unit => unit.role && unit.role.name === 'Ударный')
+          .filter(unit => unit.status !== 'LOST')
           .map(({ id }) => (
             <UnitStrikeObjectWithData key={id} id={id} />
           ))}
       </FeatureGroup>
     )
   );
+};
+
+UnitsGroupObjects.propTypes = {
+  objects: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      role: PropTypes.shape({
+        name: PropTypes.string
+      }).isRequired,
+      status: PropTypes.string
+    })
+  ).isRequired,
+  subToUpdate: PropTypes.func
+};
+
+UnitsGroupObjects.defaultProps = {
+  subToUpdate: PropTypes.func
 };
 
 export default UnitsGroupObjects;
