@@ -5,9 +5,18 @@ const GET_MISSION_LOCATIONS = gql`
     locations: getCombatMission(id: $id) {
       id
       scoutingArea
-      landingPoint
-      dumpAmmoPoint
-      departurePoint
+      landingPoint {
+        x
+        y
+      }
+      dumpAmmoPoint {
+        x
+        y
+      }
+      departurePoint {
+        x
+        y
+      }
     }
   }
 `;

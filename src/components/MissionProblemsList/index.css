@@ -1,0 +1,41 @@
+.mission-problems-list {
+  height: 200px;
+  overflow: hidden;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mission-problems-list .list-block {
+  margin-bottom: 4px;
+}
+
+.mission-problems-list .list-control {
+  color: blue;
+  width: fit-content;
+}
+
+.mission-problems-list .list-control:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.mission-problems-list .list-elements {
+  overflow: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.mission-problems-list .list-elements .list-element {
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+.mission-problems-list .list-elements .list-element .list-control {
+  padding-left: 8px;
+}
+
+.mission-problems-list .list-elements .list-element:last-of-type {
+  margin-bottom: 0;
+}

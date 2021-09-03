@@ -33,13 +33,13 @@ const inputs = [
     type: 'number',
     name: 'successLevel',
     placeholder: 0
-  },
-  {
-    title: 'Гарантир. успех поражения ЦО (%):',
-    type: 'number',
-    name: 'strikeLevel',
-    placeholder: 0
   }
+  // {
+  //   title: 'Гарантир. успех поражения ЦО (%):',
+  //   type: 'number',
+  //   name: 'strikeLevel',
+  //   placeholder: 0
+  // }
 ];
 
 const InputMissionForm = ({ stylization, onClose }) => {
@@ -58,7 +58,7 @@ const InputMissionForm = ({ stylization, onClose }) => {
   );
 
   const setMissionParams = useCallback(() => {
-    dispatch({ type: events.SET_MISSION_PARAMS, data: values });
+    dispatch({ type: events.SET_MISSION_PARAMS, data: { ...values } });
   }, [values, dispatch]);
 
   return (

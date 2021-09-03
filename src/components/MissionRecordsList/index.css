@@ -1,0 +1,9 @@
+.mission-records-list .list-group .list-group-title {
+  height: 24px;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.mission-records-list .list-group .list-elements {
+  padding-left: 8px;
+}

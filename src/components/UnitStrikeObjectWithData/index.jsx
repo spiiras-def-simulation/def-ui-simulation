@@ -16,13 +16,14 @@ const UnitStrikeObjectWithData = ({ id }) => {
 
   if (result.loading || result.error) return null;
 
-  const { coordinates, detectionRadius } = result.data;
+  const { coordinates = null, detectionRadius = null } = result.data.object || {};
   return (
     <UnitStrikeObject
       id={id}
-      position={getPosition(coordinates, projection.project)}
+      // position={getPosition(coordinates, projection.project)}
+      position={coordinates}
       detectionRadius={detectionRadius}
-      subToUpdate={() => {
+      subToUpdate={() =>
         subscribeToMore({
           document: SUBSCRIBE_UNIT_POSITION,
           variables: { id },
@@ -30,10 +31,10 @@ const UnitStrikeObjectWithData = ({ id }) => {
             if (!subscriptionData.data) return prev;
             const { object: updated } = subscriptionData.data;
             const updatedPosition = getPosition(updated.coordinates, projection.project);
-            return { object: { ...prev.object, position: updatedPosition } };
+            return { object: { ...prev.object, coordinates: updatedPosition } };
           }
-        });
-      }}
+        })
+      }
     />
   );
 };

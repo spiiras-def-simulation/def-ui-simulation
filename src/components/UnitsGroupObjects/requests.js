@@ -6,6 +6,7 @@ const GET_UNITS_GROUP_OBJECTS = gql`
       id
       units: uavs {
         id
+        status
         role {
           name
         }

@@ -12,7 +12,7 @@ import { GET_UNITS_GROUP_STATUS } from './requests';
 import './index.css';
 
 const UnitsGroupStatusControl = ({ stylization, position, opened }) => {
-  const { data } = useQuery(GET_UNITS_GROUP_STATUS, { variables: { missionId: '175' } });
+  const { data } = useQuery(GET_UNITS_GROUP_STATUS);
 
   const { mission = null } = data || {};
   return (

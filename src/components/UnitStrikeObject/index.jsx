@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { FeatureGroup } from 'react-leaflet';
 
+import UnitAttackPointsWithData from '../UnitAttackPointsWithData';
 import MarkerPosition from '../MarkerPosition';
 
 const UnitStrikeObject = ({ id, position, subToUpdate }) => {
@@ -8,7 +10,10 @@ const UnitStrikeObject = ({ id, position, subToUpdate }) => {
 
   return (
     position && (
-      <MarkerPosition number={id} position={position} options={{ color: 'mediumpurple' }} />
+      <FeatureGroup>
+        <MarkerPosition number={id} position={position} options={{ color: 'mediumpurple' }} />
+        <UnitAttackPointsWithData id={id} />
+      </FeatureGroup>
     )
   );
 };

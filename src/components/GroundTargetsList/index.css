@@ -32,7 +32,15 @@
 
 .ground-targets-list .list-records {
   overflow: auto;
-  padding-left: 14px;
-  padding-right: 14px;
+  padding-left: 8px;
+  padding-right: 8px;
   margin-bottom: 4px;
+}
+
+.ground-targets-list .list-records .list-record {
+  margin-bottom: 4px;
+}
+
+.ground-targets-list .list-records .list-record:last-of-type {
+  margin-bottom: 0;
 }

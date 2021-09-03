@@ -5,7 +5,7 @@ import ReturnViewControl from '../ReturnViewControl';
 // import DateStatus from '../DateStatus';
 import InputGroundTargetsForm from '../InputGroundTargetsForm';
 import MarkerPosition from '../MarkerPosition';
-import GroundTargetObjectsLayer from '../GroundTargetObjectsLayer';
+import GroundTargetObjectsWithData from '../GroundTargetObjectsWithData';
 
 import Context from './context';
 import { initialState, events, reducer } from './reducer';
@@ -40,7 +40,7 @@ const ViewInputGroundTargets = () => {
         {/* <DateStatus position="topright" /> */}
         {location && <MarkerPosition position={location} options={{ color: 'green' }} />}
         {target && <MarkerPosition position={target} options={{ color: 'red' }} />}
-        <GroundTargetObjectsLayer />
+        <GroundTargetObjectsWithData />
       </ViewMap>
     </Context.Provider>
   );

@@ -6,7 +6,7 @@ import GroundTargetRecord from '../GroundTargetRecord';
 
 import { GET_TARGET_OBJECT, SUBSCRIBE_TARGET_OBJECT } from './requests';
 
-const GroundTargetRecordLoaded = ({ id, stylization }) => {
+const GroundTargetRecordWithData = ({ id, stylization }) => {
   const { subscribeToMore, ...result } = useQuery(GET_TARGET_OBJECT, { variables: { id } });
 
   if (result.loading || result.error) return null;
@@ -15,8 +15,8 @@ const GroundTargetRecordLoaded = ({ id, stylization }) => {
   return (
     <GroundTargetRecord
       stylization={stylization}
-      data={object}
-      subToUpdate={() => {
+      object={object}
+      subToUpdate={() =>
         subscribeToMore({
           document: SUBSCRIBE_TARGET_OBJECT,
           variables: { id },
@@ -27,19 +27,19 @@ const GroundTargetRecordLoaded = ({ id, stylization }) => {
               object: { ...prev.object, coordinates: updated.coordinates }
             };
           }
-        });
-      }}
+        })
+      }
     />
   );
 };
 
-GroundTargetRecordLoaded.propTypes = {
+GroundTargetRecordWithData.propTypes = {
   id: PropTypes.string.isRequired,
   stylization: PropTypes.string
 };
 
-GroundTargetRecordLoaded.defaultProps = {
+GroundTargetRecordWithData.defaultProps = {
   stylization: ''
 };
 
-export default GroundTargetRecordLoaded;
+export default GroundTargetRecordWithData;

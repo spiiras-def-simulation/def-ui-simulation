@@ -1,0 +1,21 @@
+.units-problems-control {
+  width: fit-content;
+  min-width: 260px;
+  font-size: 13px;
+}
+
+.units-problems-control .control-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.units-problems-control .control-content .control-problems {
+  margin-bottom: auto;
+}
+
+.units-problems-control .control-content .control-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}

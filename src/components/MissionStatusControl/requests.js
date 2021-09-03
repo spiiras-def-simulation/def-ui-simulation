@@ -1,12 +1,10 @@
 import { gql } from '@apollo/client';
 
 const GET_MISSION_STATUS = gql`
-  query GetMissionStatus($id: ID!) {
-    mission: getCombatMission(id: $id) {
+  query GetMissionStatus {
+    mission: getLaunchedCombatMission {
       id
       directiveTime
-      timeLaunch
-      numLaunch
       successLevel
       strikeLevel
     }

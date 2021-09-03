@@ -1,0 +1,76 @@
+.re-mission-control {
+  width: 260px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+}
+
+.re-mission-control button {
+  color: darkblue;
+}
+
+.re-mission-control button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.re-mission-control button:disabled {
+  color: red;
+  cursor: auto;
+  text-decoration: none;
+}
+
+.re-mission-control .control-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid grey;
+}
+
+.re-mission-control .control-content {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 8px;
+}
+
+.re-mission-control .control-content .request-control {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.re-mission-control .request-control .request-button {
+  margin-right: 4px;
+}
+
+.re-mission-control .targets-status .targets-status-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.re-mission-control .targets-status-header span {
+  margin-right: 4px;
+}
+
+.re-mission-control .targets-status-header button {
+  margin-right: 4px;
+}
+
+.re-mission-control .targets-status .targets-list {
+  overflow: auto;
+  height: 150px;
+  max-height: 150px;
+  padding-left: 8px;
+}
+
+.re-mission-control .targets-status .targets-list .target-element {
+  margin-bottom: 2px;
+}
+
+.re-mission-control .targets-status .targets-list .target-element:last-of-type {
+  margin-bottom: 0;
+}

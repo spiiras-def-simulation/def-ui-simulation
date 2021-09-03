@@ -4,6 +4,8 @@ const GET_TARGET_OBJECT = gql`
   query GetTargetObject($id: ID!) {
     object: getTargetObject(id: $id) {
       id
+      status
+      type
       coordinates {
         x
         y

@@ -3,9 +3,20 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useQuery } from '@apollo/client';
 
+import PointRecord from '../PointRecord';
+
 import { GET_COMBAT_UNIT } from './requests';
 
 import './index.css';
+
+const mapStatus = {
+  SPAWNED: 'добавлен',
+  LAUNCHED: 'движение в ЦР',
+  LOST: 'потерян',
+  STOPPED: 'приземлился',
+  DISCHARGED: 'разряжен',
+  ATTACK_TARGET: 'атака'
+};
 
 const UnitRecord = ({ id, stylization }) => {
   const { data, loading, error } = useQuery(GET_COMBAT_UNIT, { variables: { id } });
@@ -13,25 +24,25 @@ const UnitRecord = ({ id, stylization }) => {
   if (loading || error) return null;
 
   const {
-    unit: { role, type, coordinates, telemetry }
+    unit: { status, role, type, altitude, coordinates, timeLeft }
   } = data;
   return (
     <div className={classNames('unit-record', stylization)}>
       <div className="record-header">
-        <span>ID {id}</span>
-        {role && (
-          <span>
-            , {role.name} ({type.name})
-          </span>
-        )}
+        <span>№ {id},</span>
+        {role && <span>{role.name},</span>}
+        {status && <span>{mapStatus[status] || 'Неизвестно'}</span>}
       </div>
-      {coordinates && (
-        <div className="record-descriptor record-coordinates">
-          <p className="descriptor-coordinate">Долгота: {coordinates.y}</p>
-          <p className="descriptor-coordinate">Широта: {coordinates.x}</p>
-        </div>
-      )}
-      {telemetry && <div className="record-telemetry"></div>}
+      <div className="record-descriptor">
+        {type && <p className="record-row">{type.name}</p>}
+        {altitude && <p className="record-row">Высота {altitude} м</p>}
+        {coordinates && (
+          <p className="record-row">
+            <PointRecord point={coordinates} />
+          </p>
+        )}
+        {timeLeft && <p className="record-row">Заряда ещё на {timeLeft} с</p>}
+      </div>
     </div>
   );
 };

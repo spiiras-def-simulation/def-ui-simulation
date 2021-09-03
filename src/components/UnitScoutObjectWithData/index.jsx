@@ -16,13 +16,11 @@ const UnitScoutObjectWithData = ({ id }) => {
 
   if (result.loading || result.error) return null;
 
-  const { coordinates, detectionRadius } = result.data;
+  const { object } = result.data;
   return (
     <UnitScoutObject
-      id={id}
-      position={getPosition(coordinates, projection.project)}
-      detectionRadius={detectionRadius}
-      subToUpdate={() => {
+      object={{ ...object, detectionRadius: 250 }}
+      subToUpdate={() =>
         subscribeToMore({
           document: SUBSCRIBE_UNIT_POSITION,
           variables: { id },
@@ -30,10 +28,10 @@ const UnitScoutObjectWithData = ({ id }) => {
             if (!subscriptionData.data) return prev;
             const { object: updated } = subscriptionData.data;
             const updatedPosition = getPosition(updated.coordinates, projection.project);
-            return { object: { ...prev.object, position: updatedPosition } };
+            return { object: { ...prev.object, coordinates: updatedPosition } };
           }
-        });
-      }}
+        })
+      }
     />
   );
 };

@@ -5,11 +5,13 @@
 
 .units-group-status-control .status-description {
   min-height: 200px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .units-group-status-control .status-description .status-list {
-  padding-top: 4px;
-  padding-bottom: 4px;
+  overflow: auto;
+  max-height: 200px;
 }
 
 .units-group-status-control .status-list .status-element {

@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import L from 'leaflet';
 import { Polygon } from 'react-leaflet';
 
-const AreaObject = ({ color, id, data }) => {
+const AreaObject = ({ id, data, ...options }) => {
   return (
     data && (
       <Polygon
         id={id}
         positions={L.GeoJSON.coordsToLatLngs(data.geometry.coordinates[0])}
-        color={color}
+        color={options.color}
+        fill={options.fill}
       />
     )
   );
@@ -22,12 +23,14 @@ AreaObject.propTypes = {
       coordinates: PropTypes.arrayOf(PropTypes.array)
     })
   }),
-  color: PropTypes.string
+  color: PropTypes.string,
+  fill: PropTypes.bool
 };
 
 AreaObject.defaultProps = {
   data: null,
-  color: 'blue'
+  color: 'blue',
+  fill: true
 };
 
 export default AreaObject;

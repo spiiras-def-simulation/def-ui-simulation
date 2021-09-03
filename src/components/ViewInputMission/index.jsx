@@ -10,6 +10,7 @@ import reducer from './reducer';
 import events from './events';
 import initialState from './initialState';
 import InputMissionAreas from '../InputMissionAreas';
+import InputMissionTargets from '../InputMissionTargets';
 import InputMissionLocations from '../InputMissionLocations';
 
 const ViewInputMission = () => {
@@ -39,6 +40,7 @@ const ViewInputMission = () => {
         <InputMissionControl position="topleft" stylization="modal-theme" />
         {/* <DateStatus position="topright" /> */}
         <InputMissionAreas />
+        <InputMissionTargets />
         <InputMissionLocations />
       </ViewMap>
     </Context.Provider>

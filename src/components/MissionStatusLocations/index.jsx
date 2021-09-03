@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/client';
 import { FeatureGroup } from 'react-leaflet';
 
 import MarkerPosition from '../MarkerPosition';
+import AreaObject from '../AreaObject';
 
 import { GET_MISSION_LOCATIONS } from './requests';
 
-const MissionStatusLocations = () => {
-  const { data, error, loading } = useQuery(GET_MISSION_LOCATIONS, { variables: { id: '175' } });
+const MissionStatusLocations = ({ id }) => {
+  const { data, error, loading } = useQuery(GET_MISSION_LOCATIONS, { variables: { id } });
 
   if (error || loading) return null;
 
@@ -30,11 +32,22 @@ const MissionStatusLocations = () => {
           />
         )}
         {locations.landingPoint && (
-          <MarkerPosition number="3" position={locations.landingPoint} options={{ color: 'red' }} />
+          <MarkerPosition
+            number="3"
+            position={locations.landingPoint}
+            options={{ color: 'blue' }}
+          />
+        )}
+        {locations.scoutingArea && (
+          <AreaObject id={id} data={locations.scoutingArea} color="red" fill={false} />
         )}
       </FeatureGroup>
     )
   );
+};
+
+MissionStatusLocations.propTypes = {
+  id: PropTypes.string.isRequired
 };
 
 export default MissionStatusLocations;

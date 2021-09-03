@@ -4,6 +4,9 @@ const GET_COMBAT_UNIT = gql`
   query GetCombatUnit($id: ID!) {
     unit: getCombatUnit(id: $id) {
       id
+      status
+      altitude
+      timeLeft
       role {
         id
         name

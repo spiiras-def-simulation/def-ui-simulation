@@ -18,21 +18,15 @@ const dataFields = [
     placeholder: 'Неизвестно'
   },
   {
-    title: 'Гарантир. уровень выполнения ЦЗ (%):',
+    title: 'Гарантир. уровень выполнения ЦЗ:',
     type: 'number',
     name: 'successLevel',
-    placeholder: 'Неизвестно'
-  },
-  {
-    title: 'Гарантир. успех поражения ЦО (%):',
-    type: 'number',
-    name: 'strikeLevel',
     placeholder: 'Неизвестно'
   }
 ];
 
 const MissionStatusControl = ({ stylization, position, opened }) => {
-  const { data } = useQuery(GET_MISSION_STATUS, { variables: { id: '175' } });
+  const { data } = useQuery(GET_MISSION_STATUS);
 
   const { mission = null } = data || {};
   return (

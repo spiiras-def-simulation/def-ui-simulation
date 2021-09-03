@@ -4,14 +4,14 @@
 }
 
 .ground-target-record .record-header {
-  height: 24px;
   display: flex;
   align-items: center;
   white-space: nowrap;
+  margin-bottom: 4px;
 }
 
 .ground-target-record .record-header span {
-  margin-right: auto;
+  margin-right: 4px;
 }
 
 .ground-target-record .record-header .delete-button {
@@ -24,9 +24,5 @@
 }
 
 .ground-target-record .record-descriptor {
-  padding-left: 6px;
-}
-
-.ground-target-record .record-descriptor .descriptor-coordinate {
-  height: 20px;
+  padding-left: 8px;
 }

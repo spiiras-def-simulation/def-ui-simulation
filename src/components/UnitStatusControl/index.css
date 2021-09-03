@@ -1,9 +1,0 @@
-.unit-status-control {
-  width: 260px;
-  display: flex;
-  flex-direction: column;
-}
-
-.unit-status-control .status-description {
-  min-height: 200px;
-}

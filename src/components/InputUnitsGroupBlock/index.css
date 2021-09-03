@@ -4,6 +4,8 @@
 }
 
 .input-units-group-block .input-block {
+  overflow: auto;
+  max-height: 150px;
   margin-bottom: 4px;
 }
 
