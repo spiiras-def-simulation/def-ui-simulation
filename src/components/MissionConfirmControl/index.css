@@ -54,10 +54,18 @@
   margin-bottom: 8px;
 }
 
-.mission-confirm-control .units-group .unit-type-elements {
+.mission-confirm-control .units-group .unit-group-records {
   overflow: auto;
-  max-height: 100px;
+  max-height: 140px;
   padding-left: 8px;
+}
+
+.mission-confirm-control .unit-group-records .unit-group-record {
+  margin-bottom: 2px;
+}
+
+.mission-confirm-control .unit-group-records .unit-group-record {
+  margin-bottom: 0;
 }
 
 .mission-confirm-control .confirm-buttons {
@@ -71,4 +79,12 @@
   width: 90px;
   margin-left: 2px;
   margin-right: 2px;
+}
+
+.mission-confirm-control .confirm-buttons .confirm-link-open {
+  color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 13px;
+  text-decoration: none;
 }

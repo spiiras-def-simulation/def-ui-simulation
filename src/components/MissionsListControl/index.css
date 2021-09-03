@@ -7,22 +7,12 @@
 .missions-list-control .control-content {
   margin-top: 4px;
   padding-bottom: 4px;
+  min-height: 200px;
 }
 
 .missions-list-control .missions-list {
   padding-left: 4px;
   padding-right: 4px;
   overflow: auto;
-  min-height: 200px;
   max-height: 260px;
-}
-
-.missions-list-control .list-group .list-group-title {
-  height: 24px;
-  line-height: 24px;
-  white-space: nowrap;
-}
-
-.missions-list-control .list-group .list-elements {
-  padding-left: 8px;
 }

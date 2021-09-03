@@ -1,21 +1,27 @@
 import { gql } from '@apollo/client';
 
-const GET_TARGET_OBJECTS = gql`
-  query GetTargetObjects {
-    objects: getTargetObjects {
+const GET_DETECTED_TARGET_OBJECTS = gql`
+  query GetDetectedTargetObjects {
+    objects: getDetectedTargetObjects {
       id
-      status
+      detectedCoordinates {
+        x
+        y
+      }
     }
   }
 `;
 
-const SUBSCRIBE_CHANGE_TARGET_OBJECTS = gql`
-  subscription OnUpdateUnitPosition {
-    objects: onChangeStatusTargetObjects {
+const SUBSCRIBE_DETECT_TARGET_OBJECTS = gql`
+  subscription OnDetectTargetObjects {
+    objects: onDetectTargetObjects {
       id
-      status
+      detectedCoordinates {
+        x
+        y
+      }
     }
   }
 `;
 
-export { GET_TARGET_OBJECTS, SUBSCRIBE_CHANGE_TARGET_OBJECTS }; // eslint-disable-line
+export { GET_DETECTED_TARGET_OBJECTS, SUBSCRIBE_DETECT_TARGET_OBJECTS }; // eslint-disable-line

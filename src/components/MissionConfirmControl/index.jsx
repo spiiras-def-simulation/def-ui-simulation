@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useQuery, useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import Control from 'react-leaflet-control';
 
-import UnitRecord from '../UnitRecord';
+import UnitStatusRecordWithData from '../UnitStatusRecordWithData';
 import PrimaryButton from '../PrimaryButton';
 
 import MissionStatus from '../ViewOperationConfirmation/MissionStatus';
@@ -26,12 +27,6 @@ const dataFields = [
     name: 'successLevel',
     placeholder: 'Неизвестно'
   },
-  // {
-  //   title: 'Гарантир. успех поражения ЦО (%):',
-  //   type: 'number',
-  //   name: 'strikeLevel',
-  //   placeholder: 'Неизвестно'
-  // },
   {
     title: 'Результат целеполагания:',
     type: 'text',
@@ -87,9 +82,13 @@ const MissionConfirmControl = ({ id, position, stylization, onClose }) => {
             </ul>
             <div className="units-group">
               <div className="units-group-title">Боевая группа:</div>
-              <div className="unit-type-elements">
-                {mission.units.map(unit => (
-                  <UnitRecord key={unit.id} stylization="unit-group-element" id={unit.id} />
+              <div className="unit-group-records">
+                {mission.units.map(({ id: unitId }) => (
+                  <UnitStatusRecordWithData
+                    key={unitId}
+                    id={unitId}
+                    stylization="unit-group-record"
+                  />
                 ))}
               </div>
             </div>
@@ -99,6 +98,15 @@ const MissionConfirmControl = ({ id, position, stylization, onClose }) => {
                   Выполнить
                 </PrimaryButton>
                 <PrimaryButton stylization="confirm-button">Отказать</PrimaryButton>
+              </div>
+            )}
+            {mission.status === MissionStatus.LAUNCHED && (
+              <div className="confirm-buttons">
+                <PrimaryButton stylization="confirm-button">
+                  <Link to="/operation" className="confirm-link-open">
+                    <span>Открыть</span>
+                  </Link>
+                </PrimaryButton>
               </div>
             )}
           </div>

@@ -1,16 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FeatureGroup } from 'react-leaflet';
 
-import GroundTargetPosition from '../GroundTargetPosition';
+import MapContext from '../ViewMap/context';
+
+import MarkerPosition from '../MarkerPosition';
 
 const DetectedTargetObjects = ({ objects, subToUpdate }) => {
+  const { projection } = useContext(MapContext);
+
   useEffect(() => subToUpdate(), [subToUpdate]);
 
   return (
     <FeatureGroup>
-      {objects.map(({ id }) => (
-        <GroundTargetPosition key={id} id={id} />
+      {objects.map(({ id, detectedCoordinates }) => (
+        <MarkerPosition
+          key={id}
+          position={projection.project(detectedCoordinates)}
+          options={{ color: 'black', size: 12 }}
+        />
       ))}
     </FeatureGroup>
   );

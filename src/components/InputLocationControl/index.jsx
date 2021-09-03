@@ -41,14 +41,6 @@ const InputLocationControl = ({ position, stylization }) => {
               </div>
               <div className="controls-list">
                 <StateControl
-                  name={AreaTypes.RADAR_WARFARE_AREA}
-                  label="Ввод области РЭБ"
-                  active={AreaTypes.RADAR_WARFARE_AREA === state.drawingMode}
-                  onChoose={setDrawingMode}
-                  onClose={stopDrawing}
-                  stylization="control"
-                />
-                <StateControl
                   name={AreaTypes.RADAR_JAMMING_AREA}
                   label="Ввод области РЭП"
                   active={AreaTypes.RADAR_JAMMING_AREA === state.drawingMode}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useQuery } from '@apollo/client';
 
-import GroundTargetRecord from '../GroundTargetRecord';
+import GroundTargetRecordWithData from '../GroundTargetRecordWithData';
 
 import { GET_TARGET_OBJECTS } from './requests';
 
@@ -25,7 +25,7 @@ const GroundTargetsList = ({ stylization, onClose }) => {
       </div>
       <div className="list-records">
         {objects.map(({ id }) => (
-          <GroundTargetRecord key={id} id={id} />
+          <GroundTargetRecordWithData key={id} id={id} stylization="list-record" />
         ))}
       </div>
     </div>

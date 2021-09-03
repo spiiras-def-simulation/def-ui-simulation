@@ -10,11 +10,11 @@ const UnitsGroupObjectsWithData = () => {
 
   if (result.loading || result.error) return null;
 
-  const { units } = result.data.mission;
+  const { units = [] } = result.data.mission || {};
   return (
     <UnitsGroupObjects
       objects={units}
-      subToUpdate={() => {
+      subToUpdate={() =>
         subscribeToMore({
           document: SUBSCRIBE_CHANGE_UNITS_STATUS,
           updateQuery: (prev, { subscriptionData }) => {
@@ -26,8 +26,8 @@ const UnitsGroupObjectsWithData = () => {
             });
             return { object: { ...prev.object, units: [...updatedMissionUnits] } };
           }
-        });
-      }}
+        })
+      }
     />
   );
 };

@@ -1,6 +1,5 @@
 .simulation-control {
   width: 260px;
-  max-height: calc(100vh - 80px);
   font-size: 13px;
 }
 
@@ -76,5 +75,5 @@
   z-index: 100;
   position: absolute;
   top: 0;
-  left: calc(100% + 16px);
+  left: calc(100% + 24px);
 }

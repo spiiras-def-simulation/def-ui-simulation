@@ -25,11 +25,11 @@ const DetectedTargetsStatusControl = ({ stylization, position, opened }) => {
         <div className="control-content">
           <div className="detected-controls">
             <button type="button" onClick={confirmAttackTargets}>
-              Уничтожить
+              Подтвердить сброс СГ
             </button>
-            {loading && <span>Выполняется...</span>}
+            {loading && <span>Запрос...</span>}
             {error && <span>Ошибка</span>}
-            {startAttack && <span>Атака началась</span>}
+            {startAttack && <span>Подтверждено</span>}
           </div>
           <DetectedTargetsListWithData stylization="detected-list" />
         </div>

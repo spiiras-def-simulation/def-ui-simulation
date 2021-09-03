@@ -10,7 +10,11 @@ const strHourTime = time => {
   const hours = Math.trunc(time);
   const minuts = Math.trunc(60 * (time % 1));
   const secunds = Math.round((60 * (time % 1)) % 1);
-  return `${hours} часа ${minuts} мин. ${secunds} сек.`;
+  const strHour = hours ? `${hours} часа ` : '';
+  const strMinuts = minuts ? `${minuts} мин.` : '';
+  const strSecunds = secunds ? `${secunds} сек.` : '';
+  const strTime = `${strHour}${strMinuts}${strSecunds}`;
+  return strTime || null;
 };
 
 const MissionRecord = ({ mission, stylization, onShow }) => {

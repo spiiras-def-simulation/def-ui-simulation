@@ -5,6 +5,7 @@ const GET_UNIT_OBJECT = gql`
     object: getCombatUnit(id: $id) {
       id
       detectionRadius
+      tvsSize
       coordinates: globalPosition {
         x
         y

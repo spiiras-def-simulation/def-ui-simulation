@@ -9,13 +9,8 @@
   align-items: center;
 }
 
-.unit-record .record-header .delete-button {
-  color: blue;
-}
-
-.unit-record .record-header .delete-button:hover {
-  cursor: pointer;
-  text-decoration: underline;
+.unit-record .record-header span {
+  margin-right: 4px;
 }
 
 .unit-record .record-descriptor {

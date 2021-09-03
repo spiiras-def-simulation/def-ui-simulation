@@ -1,9 +1,6 @@
 .units-list {
   min-width: 260px;
   min-height: 200px;
-  max-height: 240px;
-  display: flex;
-  flex-direction: column;
 }
 
 .units-list .list-title {
@@ -31,8 +28,9 @@
 
 .units-list .list-records {
   overflow: auto;
-  padding-left: 12px;
-  padding-right: 12px;
+  max-height: 200px;
+  padding-left: 8px;
+  padding-right: 8px;
   margin-bottom: 6px;
 }
 

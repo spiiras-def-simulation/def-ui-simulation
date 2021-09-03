@@ -21,6 +21,8 @@ const ViewMap = ({ onClick, children }) => {
         center={center}
         zoom={zoom}
         zoomControl={false}
+        maxZoom={24}
+        maxNativeZoom={24}
         bounds={bounds}
         maxBounds={bounds}
         maxBoundsViscosity={1.0}

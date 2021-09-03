@@ -2,9 +2,9 @@ import { gql } from '@apollo/client';
 
 const LOAD_MISSION_TARGET_OBJECTS = gql`
   mutation LoadMissionTargetObjects {
-    objects: loadMissionTargetObjects {
+    objects: loadDetectedTargetObjects {
       id
-      coordinates {
+      coordinates: detectedCoordinates {
         x
         y
       }

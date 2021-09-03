@@ -18,8 +18,8 @@ const DetectedTargetRecord = ({ id, number, stylization }) => {
 
   if (loading || error) return null;
 
-  const { image } = data.object;
-  const coordinates = data.object.coordinates ? projection.project(data.object.coordinates) : null;
+  const { image = null, coordinates = null } = data.object || {};
+  const positions = coordinates ? projection.project(coordinates) : null;
   return (
     <div className={classNames('detected-target-record', stylization)}>
       <div className="record-header">
@@ -32,9 +32,9 @@ const DetectedTargetRecord = ({ id, number, stylization }) => {
           Показать
         </button>
       </div>
-      {coordinates && (
+      {positions && (
         <div className="record-descriptor">
-          <PointRecord point={coordinates} />
+          <PointRecord point={positions} />
         </div>
       )}
       {image && showImage && (

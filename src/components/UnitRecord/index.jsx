@@ -9,29 +9,40 @@ import { GET_COMBAT_UNIT } from './requests';
 
 import './index.css';
 
+const mapStatus = {
+  SPAWNED: 'добавлен',
+  LAUNCHED: 'движение в ЦР',
+  LOST: 'потерян',
+  STOPPED: 'приземлился',
+  DISCHARGED: 'разряжен',
+  ATTACK_TARGET: 'атака'
+};
+
 const UnitRecord = ({ id, stylization }) => {
   const { data, loading, error } = useQuery(GET_COMBAT_UNIT, { variables: { id } });
 
   if (loading || error) return null;
 
   const {
-    unit: { role, type, coordinates }
+    unit: { status, role, type, altitude, coordinates, timeLeft }
   } = data;
   return (
     <div className={classNames('unit-record', stylization)}>
       <div className="record-header">
-        <span>№ {id}</span>
-        {role && (
-          <span>
-            , {role.name} ({type.name})
-          </span>
-        )}
+        <span>№ {id},</span>
+        {role && <span>{role.name},</span>}
+        {status && <span>{mapStatus[status] || 'Неизвестно'}</span>}
       </div>
-      {coordinates && (
-        <div className="record-descriptor">
-          <PointRecord point={coordinates} />
-        </div>
-      )}
+      <div className="record-descriptor">
+        {type && <p className="record-row">{type.name}</p>}
+        {altitude && <p className="record-row">Высота {altitude} м</p>}
+        {coordinates && (
+          <p className="record-row">
+            <PointRecord point={coordinates} />
+          </p>
+        )}
+        {timeLeft && <p className="record-row">Заряда ещё на {timeLeft} с</p>}
+      </div>
     </div>
   );
 };

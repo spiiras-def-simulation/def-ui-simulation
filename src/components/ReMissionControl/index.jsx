@@ -98,7 +98,6 @@ const ReMissionControl = ({ id, position, stylization }) => {
           {targets.map(target => (
             <MarkerPosition
               key={target.id}
-              number={target.id}
               position={target.coordinates}
               options={{ color: 'black' }}
             />

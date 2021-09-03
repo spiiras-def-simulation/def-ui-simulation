@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/client';
-import { FeatureGroup, GeoJSON } from 'react-leaflet';
+import { FeatureGroup } from 'react-leaflet';
 
 import MarkerPosition from '../MarkerPosition';
+import AreaObject from '../AreaObject';
 
 import { GET_MISSION_LOCATIONS } from './requests';
 
@@ -38,7 +39,7 @@ const MissionStatusLocations = ({ id }) => {
           />
         )}
         {locations.scoutingArea && (
-          <GeoJSON data={locations.scoutingArea} style={{ color: 'red', fill: false }} />
+          <AreaObject id={id} data={locations.scoutingArea} color="red" fill={false} />
         )}
       </FeatureGroup>
     )

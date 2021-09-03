@@ -1,0 +1,22 @@
+.unit-status-record {
+  display: flex;
+  flex-direction: column;
+}
+
+.unit-status-record span {
+  margin-right: 4px;
+}
+
+.unit-status-record .record-header {
+  display: flex;
+  align-items: center;
+}
+
+.unit-status-record .record-descriptions {
+  padding-left: 8px;
+}
+
+.unit-status-record .record-descriptions .record-status {
+  display: flex;
+  align-items: center;
+}

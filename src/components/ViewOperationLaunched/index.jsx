@@ -5,6 +5,7 @@ import ViewMap from '../ViewMap';
 import MissionStatusControl from '../MissionStatusControl';
 import UnitsGroupStatusControl from '../UnitsGroupStatusControl';
 import DetectedTargetsStatusControl from '../DetectedTargetsStatusControl';
+import MissionProblemsControl from '../MissionProblemsControl';
 import MissionStatusLocations from '../MissionStatusLocations';
 import UnitsGroupObjectsWithData from '../UnitsGroupObjectsWithData';
 import UnitsGroupPath from '../UnitsGroupPath';
@@ -23,6 +24,7 @@ const ViewOperationLaunched = () => {
       <MissionStatusControl stylization="modal-theme" position="topleft" opened />
       <UnitsGroupStatusControl stylization="modal-theme" position="topleft" opened={false} />
       <DetectedTargetsStatusControl stylization="modal-theme" position="topright" opened={false} />
+      <MissionProblemsControl id={id} stylization="modal-theme" position="topright" opened />
       <MissionStatusLocations id={id} />
       <UnitsGroupPath id={id} />
       <DetectedTargetObjectsWithData />

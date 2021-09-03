@@ -21,7 +21,7 @@ const GroundTargetPosition = ({ id, isGlobal }) => {
 
   if (!coordinates) return null;
 
-  return <MarkerPosition position={coordinates} options={{ color: 'black' }} />;
+  return <MarkerPosition number={id} position={coordinates} options={{ color: 'black' }} />;
 };
 
 GroundTargetPosition.propTypes = {

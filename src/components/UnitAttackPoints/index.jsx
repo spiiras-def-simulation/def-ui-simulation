@@ -1,27 +1,33 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FeatureGroup, Polyline } from 'react-leaflet';
+
+import MapContext from '../ViewMap/context';
 
 import MarkerPosition from '../MarkerPosition';
 
 const UnitAttackPoints = ({ unit, subToUpdate }) => {
-  useEffect(() => subToUpdate(), [subToUpdate]);
-  const { status, coordinates, attackPoints } = unit;
+  const { projection } = useContext(MapContext);
 
-  const attackPath = useMemo(
-    () =>
-      attackPoints.reduce((path, attackPoint) => [...path, [attackPoint.x, attackPoint.y]], [
-        [coordinates.x, coordinates.y]
-      ]),
-    [coordinates, attackPoints]
-  );
+  useEffect(() => subToUpdate(), [subToUpdate]);
+
+  const { status = null, coordinates = null, attackPoints = null } = unit || {};
+  const [points, attackPath] = useMemo(() => {
+    const projPoints = attackPoints ? attackPoints.map(point => projection.project(point)) : [];
+    const projAttackPath = coordinates
+      ? projPoints.reduce((path, attackPoint) => [...path, [attackPoint.x, attackPoint.y]], [
+          [coordinates.x, coordinates.y]
+        ])
+      : [];
+    return [projPoints, projAttackPath];
+  }, [coordinates, attackPoints, projection]);
 
   return (
     status === 'ATTACK_TARGET' && (
       <FeatureGroup>
         <Polyline positions={attackPath} color="red" weight={2} />
-        {attackPoints.map(point => (
-          <MarkerPosition position={point} options={{ color: 'red' }} />
+        {points.map(point => (
+          <MarkerPosition position={point} options={{ color: 'red', size: 12 }} />
         ))}
       </FeatureGroup>
     )

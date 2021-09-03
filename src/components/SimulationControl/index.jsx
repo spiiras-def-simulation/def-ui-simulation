@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Control from 'react-leaflet-control';
 
+import ControlPanel from '../ControlPanel';
 import StateControl from '../StateControl';
 import RefControl from '../RefControl';
 import InputUnitTypeForm from '../InputUnitTypeForm';
@@ -41,11 +42,11 @@ const SimulationControl = ({ position, stylization }) => {
 
   return (
     <Control position={position}>
-      <div className={classNames('simulation-control', stylization)}>
-        <div className="control-title">
-          <span className="title">Управление симуляцией</span>
-          <i className="fa fa-times close-button" aria-hidden="true"></i>
-        </div>
+      <ControlPanel
+        stylization={classNames('simulation-control', stylization)}
+        title="Управление симуляцией"
+        opened
+      >
         <div className="state-controls">
           <div className="controls-block">
             <div className="block-icon">
@@ -153,7 +154,7 @@ const SimulationControl = ({ position, stylization }) => {
             </div>
           </div>
         </div>
-      </div>
+      </ControlPanel>
     </Control>
   );
 };

@@ -2,39 +2,43 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FeatureGroup, Circle } from 'react-leaflet';
 
+import TVSArea from '../TVSArea';
 import MarkerPosition from '../MarkerPosition';
 
-const UnitScoutObject = ({ id, position, detectionRadius, subToUpdate }) => {
+const UnitScoutObject = ({ object, subToUpdate }) => {
   useEffect(() => subToUpdate(), [subToUpdate]);
-
-  // const fixPath = useMemo(() => {
-  //   const simplify = path ? L.LineUtil.simplify(path, 5) : [];
-  //   return simplify.map(point => projection.project(point)).map(point => [point.x, point.y]);
-  // }, [path, projection]);
-
+  const { id, detectionRadius, tvsSize, coordinates } = object;
   return (
-    position && (
+    coordinates && (
       <FeatureGroup>
-        <Circle center={[position.x, position.y]} radius={detectionRadius} />
-        <MarkerPosition number={id} position={position} options={{ color: 'darkmagenta' }} />
+        <Circle
+          center={[coordinates.x, coordinates.y]}
+          radius={detectionRadius}
+          fill={false}
+          color="darkmagenta"
+          weight={2}
+        />
+        <TVSArea center={coordinates} size={tvsSize} />
+        <MarkerPosition number={id} position={coordinates} options={{ color: 'darkmagenta' }} />
       </FeatureGroup>
     )
   );
 };
 
 UnitScoutObject.propTypes = {
-  id: PropTypes.string.isRequired,
-  position: PropTypes.shape({
-    x: PropTypes.number,
-    y: PropTypes.number
-  }),
-  detectionRadius: PropTypes.number,
+  object: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    detectionRadius: PropTypes.number,
+    tvsSize: PropTypes.number,
+    coordinates: PropTypes.shape({
+      x: PropTypes.number,
+      y: PropTypes.number
+    })
+  }).isRequired,
   subToUpdate: PropTypes.func
 };
 
 UnitScoutObject.defaultProps = {
-  position: null,
-  detectionRadius: null,
   subToUpdate: () => {}
 };
 

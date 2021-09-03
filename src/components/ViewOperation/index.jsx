@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 
-import ViewOperationLaunched from '../ViewOperaionLaunched';
+import ViewOperationLaunched from '../ViewOperationLaunched';
 import ViewOperationСonfirmation from '../ViewOperationConfirmation';
 
 import { GET_LAUNCHED_MISSION } from './requests';
