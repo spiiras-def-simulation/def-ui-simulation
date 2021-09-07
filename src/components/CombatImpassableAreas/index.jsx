@@ -15,12 +15,7 @@ const CombatImpassableAreas = () => {
   return (
     <FeatureGroup>
       {areas.map(({ id, coordinates }) => (
-        <MapObject
-          key={id}
-          coordinates={JSON.parse(coordinates)}
-          options={{ color: 'red' }}
-          isLocal
-        />
+        <MapObject key={id} coordinates={coordinates} options={{ color: 'red' }} />
       ))}
     </FeatureGroup>
   );

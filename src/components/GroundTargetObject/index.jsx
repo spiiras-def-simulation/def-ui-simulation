@@ -30,7 +30,7 @@ const GroundTargetObject = ({ object, subToUpdate }) => {
               x: pathPositions[0][0],
               y: pathPositions[0][1]
             }}
-            options={{ color: 'green', size: 14, fontSize: 7 }}
+            options={{ color: 'green' }}
           />
         )}
         {pathPositions && pathPositions[pathPositions.length - 1] && (
@@ -39,14 +39,10 @@ const GroundTargetObject = ({ object, subToUpdate }) => {
               x: pathPositions[pathPositions.length - 1][0],
               y: pathPositions[pathPositions.length - 1][1]
             }}
-            options={{ color: 'red', size: 14, fontSize: 7 }}
+            options={{ color: 'red' }}
           />
         )}
-        <MarkerPosition
-          number={id}
-          position={positions}
-          options={{ color: 'black', size: 14, fontSize: 7 }}
-        />
+        <MarkerPosition number={id} position={positions} options={{ color: 'black', size: 12 }} />
       </FeatureGroup>
     )
   );

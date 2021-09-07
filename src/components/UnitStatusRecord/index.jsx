@@ -20,7 +20,7 @@ const UnitStatusRecord = ({ record, stylization, subToUpdate }) => {
     <div className={classNames('unit-status-record', stylization)}>
       <p className="record-header">
         <span>№ {id},</span>
-        {role && <span>{role}</span>}
+        {role && <span>{role},</span>}
         {status && <span>{mapStatus[status] || 'неизвестно'}</span>}
       </p>
       <div className="record-descriptions">{type && <p>{type}</p>}</div>

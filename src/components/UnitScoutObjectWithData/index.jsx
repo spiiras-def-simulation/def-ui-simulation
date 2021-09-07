@@ -19,7 +19,7 @@ const UnitScoutObjectWithData = ({ id }) => {
   const { object } = result.data;
   return (
     <UnitScoutObject
-      object={{ ...object, detectionRadius: 250 }}
+      object={{ ...object, detectionRadius: 500, tvsSize: 540 }}
       subToUpdate={() =>
         subscribeToMore({
           document: SUBSCRIBE_UNIT_POSITION,
