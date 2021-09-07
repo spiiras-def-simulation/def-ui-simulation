@@ -13,7 +13,7 @@ const MissionProblemsControl = ({ id, stylization, position }) => {
     <Control position={position}>
       <ControlPanel
         stylization={classNames('units-problems-control', stylization)}
-        title="Список критических проблем"
+        title="Список кризисных ситуаций"
       >
         <div className="control-content">
           <MissionProblemsListWithData id={id} />

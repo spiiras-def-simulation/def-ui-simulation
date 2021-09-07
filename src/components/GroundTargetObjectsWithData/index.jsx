@@ -13,7 +13,8 @@ const GroundTargetObjectsWithData = () => {
   const { objects } = result.data;
   return (
     <GroundTargetObjects
-      objects={objects.filter(({ status }) => status === 'LAUNCHED' || status === 'DETECTED')}
+      // objects={objects.filter(({ status }) => status === 'LAUNCHED' || status === 'DETECTED')}
+      objects={objects}
       subToUpdate={() =>
         subscribeToMore({
           document: SUBSCRIBE_CHANGE_TARGETS_STATUS,

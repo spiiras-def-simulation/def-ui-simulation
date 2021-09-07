@@ -14,10 +14,12 @@ const MissionProblemsList = ({ units, setUnitsControl, setUnitControl, stylizati
       <p className="list-header list-block">
         {units.length ? `Обнаружено проблем - ${units.length} шт.` : 'Проблем не обнаружено'}
       </p>
-      {units.length && (
+      {units.length ? (
         <button className="list-control list-block" type="button" onClick={setUnitsControl}>
           Ручное управление группой
         </button>
+      ) : (
+        ''
       )}
       <ul className="list-elements list-block">
         {units.reverse().map(({ id, status, role }, i) => (

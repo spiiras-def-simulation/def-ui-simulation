@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/client';
 import { FeatureGroup } from 'react-leaflet';
 
-import MarkerPosition from '../MarkerPosition';
+import MarkerKeyPoint from '../MarkerKeyPoint';
 import AreaObject from '../AreaObject';
 
 import { GET_MISSION_LOCATIONS } from './requests';
@@ -18,25 +18,13 @@ const MissionStatusLocations = ({ id }) => {
     locations && (
       <FeatureGroup>
         {locations.departurePoint && (
-          <MarkerPosition
-            number="1"
-            position={locations.departurePoint}
-            options={{ color: 'blue' }}
-          />
+          <MarkerKeyPoint position={locations.departurePoint} options={{ color: 'green' }} />
         )}
         {locations.dumpAmmoPoint && (
-          <MarkerPosition
-            number="2"
-            position={locations.dumpAmmoPoint}
-            options={{ color: 'green' }}
-          />
+          <MarkerKeyPoint position={locations.dumpAmmoPoint} options={{ color: 'blue' }} />
         )}
         {locations.landingPoint && (
-          <MarkerPosition
-            number="3"
-            position={locations.landingPoint}
-            options={{ color: 'blue' }}
-          />
+          <MarkerKeyPoint position={locations.landingPoint} options={{ color: 'red' }} />
         )}
         {locations.scoutingArea && (
           <AreaObject id={id} data={locations.scoutingArea} color="red" fill={false} />

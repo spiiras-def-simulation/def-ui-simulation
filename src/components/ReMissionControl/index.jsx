@@ -99,7 +99,7 @@ const ReMissionControl = ({ id, position, stylization }) => {
             <MarkerPosition
               key={target.id}
               position={target.coordinates}
-              options={{ color: 'black' }}
+              options={{ color: 'black', size: 12 }}
             />
           ))}
         </FeatureGroup>

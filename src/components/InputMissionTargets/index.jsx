@@ -11,8 +11,8 @@ const InputMissionTargets = () => {
   const { targets } = state;
   return (
     <FeatureGroup>
-      {targets.map(({ id, coordinates }) => (
-        <MarkerPosition number={id} position={coordinates} options={{ color: 'black' }} />
+      {targets.map(({ coordinates }) => (
+        <MarkerPosition position={coordinates} options={{ color: 'black', size: 12 }} />
       ))}
     </FeatureGroup>
   );

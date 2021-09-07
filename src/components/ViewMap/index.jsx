@@ -11,8 +11,8 @@ import './index.css';
 
 const ViewMap = ({ onClick, children }) => {
   const zoom = 10;
-  const center = useMemo(() => [42.63313293457031, 45.16509478442965], []);
-  const bounds = useMemo(() => getAreaBounds(center, 30000), [center]);
+  const center = useMemo(() => [41.70822143554687, 44.09202367722234], []);
+  const bounds = useMemo(() => getAreaBounds(center, 50000), [center]);
   const projection = useMemo(() => getProjection(center, 1), [center]);
   return (
     <Context.Provider value={{ projection }}>

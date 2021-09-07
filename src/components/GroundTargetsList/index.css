@@ -1,5 +1,6 @@
 .ground-targets-list {
   min-width: 260px;
+  min-height: 200px;
   max-height: 320px;
   width: fit-content;
   display: flex;

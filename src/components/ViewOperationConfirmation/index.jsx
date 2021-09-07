@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import ViewMap from '../ViewMap';
 import MissionsListControl from '../MissionsListControl';
 import MissionConfirmControl from '../MissionConfirmControl';
-import MissionStatusLocations from '../MissionStatusLocations';
 import ReMissionControl from '../ReMissionControl';
+import MissionStatusLocations from '../MissionStatusLocations';
+import UnitsGroupPath from '../UnitsGroupPath';
+// import CombatLocations from '../CombatLocations';
 
 const ViewOperationСonfirmation = () => {
   const [mission, setMission] = useState(null);
@@ -26,6 +28,8 @@ const ViewOperationСonfirmation = () => {
       )}
       {mission && <ReMissionControl id={mission} position="topright" stylization="modal-theme" />}
       {mission && <MissionStatusLocations id={mission} />}
+      {mission && <UnitsGroupPath id={mission} />}
+      {/* <CombatLocations /> */}
     </ViewMap>
   );
 };

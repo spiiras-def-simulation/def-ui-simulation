@@ -6,8 +6,8 @@ import { Marker } from 'react-leaflet';
 import './index.css';
 
 const MarkerPosition = ({ position, number, options }) => {
-  const { color = 'red', size = 16, fontSize = 9 } = options;
-  const styles = `background-color:${color};width:${size}px;height:${size}px;line-height:${size}px;font-size:${fontSize}px`;
+  const { color = 'red', size = 14, fontSize = 8 } = options;
+  const styles = `background-color:${color};width:${size}px;height:${size}px;font-size:${fontSize}px`;
   return (
     <Marker
       position={[position.x, position.y]}
