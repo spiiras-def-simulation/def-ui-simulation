@@ -4,7 +4,7 @@ const GET_UNIT_OBJECT = gql`
   query GetUnitStrikeObject($id: ID!) {
     object: getCombatUnit(id: $id) {
       id
-      coordinates: globalPosition {
+      coordinates: localPosition {
         x
         y
       }

@@ -5,7 +5,7 @@ import UnitsGroupObjects from '../UnitsGroupObjects';
 
 import { GET_UNITS_OBJECTS, SUBSCRIBE_CHANGE_UNITS_STATUS } from './requests';
 
-const ShownStatus = ['SPAWNED', 'LAUNCHED', 'STOPPED', 'ATTACK_TARGET'];
+const ShownStatus = ['SPAWNED', 'LAUNCHED', 'LOST', 'STOPPED', 'ATTACK_TARGET'];
 
 const UnitsLaunchedWithData = () => {
   const { subscribeToMore, ...result } = useQuery(GET_UNITS_OBJECTS);

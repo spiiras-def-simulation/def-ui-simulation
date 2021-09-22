@@ -8,19 +8,31 @@
 }
 
 .detected-targets-status-control .control-content .detected-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.detected-targets-status-control .detected-controls .detected-control {
   height: 24px;
   display: flex;
   align-items: flex-end;
 }
 
-.detected-targets-status-control .detected-controls button {
-  color: red;
+.detected-targets-status-control .detected-control button {
   margin-right: 4px;
 }
 
-.detected-targets-status-control .detected-controls button:hover {
+.detected-targets-status-control .detected-control button:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.detected-targets-status-control .detected-control .confirm-button {
+  color: red;
+}
+
+.detected-targets-status-control .detected-control .reject-button {
+  color: blue;
 }
 
 .detected-targets-status-control .control-content .detected-list {

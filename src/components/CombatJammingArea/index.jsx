@@ -6,8 +6,8 @@ import MapObject from '../MapObject';
 
 import { GET_COMBAT_AREAS } from './requests';
 
-const CombatImpassableAreas = () => {
-  const { data, loading, error } = useQuery(GET_COMBAT_AREAS, { variables: { type: 'ban' } });
+const CombatJammingArea = () => {
+  const { data, loading, error } = useQuery(GET_COMBAT_AREAS, { variables: { type: 'rep' } });
 
   if (loading || error) return null;
 
@@ -15,10 +15,10 @@ const CombatImpassableAreas = () => {
   return (
     <FeatureGroup>
       {areas.map(({ id, coordinates }) => (
-        <MapObject key={id} coordinates={coordinates} options={{ color: 'black' }} />
+        <MapObject key={id} coordinates={coordinates} options={{ color: 'blue' }} />
       ))}
     </FeatureGroup>
   );
 };
 
-export default CombatImpassableAreas;
+export default CombatJammingArea;

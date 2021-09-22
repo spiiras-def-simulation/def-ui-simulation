@@ -12,9 +12,8 @@ import { CONFIRM_ATTACK_TARGETS } from './requests';
 import './index.css';
 
 const DetectedTargetsStatusControl = ({ stylization, position, opened }) => {
-  const [confirmAttackTargets, result] = useMutation(CONFIRM_ATTACK_TARGETS);
-  const { data: answer, loading, error } = result;
-  const { startAttack } = answer || {};
+  const [confirmAttackTargets, confirmResult] = useMutation(CONFIRM_ATTACK_TARGETS);
+  const { startAttack } = confirmResult.data || {};
   return (
     <Control position={position}>
       <ControlPanel
@@ -24,12 +23,19 @@ const DetectedTargetsStatusControl = ({ stylization, position, opened }) => {
       >
         <div className="control-content">
           <div className="detected-controls">
-            <button type="button" onClick={confirmAttackTargets}>
-              Подтвердить сброс СГ
-            </button>
-            {loading && <span>Запрос...</span>}
-            {error && <span>Ошибка</span>}
-            {startAttack && <span>Подтверждено</span>}
+            <div className="detected-control">
+              <button className="confirm-button" type="button" onClick={confirmAttackTargets}>
+                Подтвердить сброс СГ
+              </button>
+              {confirmResult.loading && <span>Запрос...</span>}
+              {confirmResult.error && <span>Ошибка</span>}
+              {startAttack && <span>Подтверждено</span>}
+            </div>
+            <div className="detected-control">
+              <button className="reject-button" type="button" onClick={() => {}}>
+                Отклонить сброс СГ
+              </button>
+            </div>
           </div>
           <DetectedTargetsListWithData stylization="detected-list" />
         </div>

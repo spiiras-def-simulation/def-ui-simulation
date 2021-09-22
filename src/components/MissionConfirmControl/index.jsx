@@ -97,7 +97,6 @@ const MissionConfirmControl = ({ id, position, stylization, onClose }) => {
                 <PrimaryButton stylization="confirm-button" onClick={confirmMission}>
                   Выполнить
                 </PrimaryButton>
-                <PrimaryButton stylization="confirm-button">Отказать</PrimaryButton>
               </div>
             )}
             {mission.status === MissionStatus.LAUNCHED && (

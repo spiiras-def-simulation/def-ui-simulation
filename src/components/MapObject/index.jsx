@@ -17,7 +17,7 @@ const MapObject = ({ coordinates, options, isLocal }) => {
   }, [isLocal, coordinates, projection]);
 
   const { color } = options;
-  return <Polygon positions={positions} color={color} />;
+  return <Polygon positions={positions} color={color} weight={2} />;
 };
 
 MapObject.propTypes = {

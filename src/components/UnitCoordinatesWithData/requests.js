@@ -1,11 +1,9 @@
 import { gql } from '@apollo/client';
 
-const GET_UNIT_OBJECT = gql`
-  query GetUnitScoutObject($id: ID!) {
-    object: getCombatUnit(id: $id) {
+const GET_COMBAT_UNIT = gql`
+  query GetCombatUnit($id: ID!) {
+    unit: getCombatUnit(id: $id) {
       id
-      detectionRadius
-      tvsSize
       coordinates: localPosition {
         x
         y
@@ -16,7 +14,7 @@ const GET_UNIT_OBJECT = gql`
 
 const SUBSCRIBE_UNIT_POSITION = gql`
   subscription OnUpdateUnitPosition($id: ID!) {
-    object: onUpdateCombatUnitLocalPosition(id: $id) {
+    unit: onUpdateCombatUnitLocalPosition(id: $id) {
       id
       coordinates: localPosition {
         x
@@ -26,4 +24,4 @@ const SUBSCRIBE_UNIT_POSITION = gql`
   }
 `;
 
-export { GET_UNIT_OBJECT, SUBSCRIBE_UNIT_POSITION }; // eslint-disable-line
+export { GET_COMBAT_UNIT, SUBSCRIBE_UNIT_POSITION }; // eslint-disable-line
