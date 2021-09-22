@@ -3,10 +3,10 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import { onError } from '@apollo/client/link/error';
 import { getMainDefinition } from '@apollo/client/utilities';
 
-const httpLink = new HttpLink({ uri: `http://${window.location.hostname}:5300/graphql` });
+const httpLink = new HttpLink({ uri: `http://172.17.0.1:5300/graphql` });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://${window.location.hostname}:5300/graphql`,
+  uri: `ws://172.17.0.1:5300/graphql`,
   options: { reconnect: true }
 });
 
