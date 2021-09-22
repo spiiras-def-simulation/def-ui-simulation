@@ -6,7 +6,6 @@ const GET_COMBAT_UNIT = gql`
       id
       status
       altitude
-      timeLeft
       role {
         id
         name
@@ -14,11 +13,6 @@ const GET_COMBAT_UNIT = gql`
       type {
         id
         name
-      }
-      coordinates: globalPosition {
-        x
-        y
-        z
       }
     }
   }

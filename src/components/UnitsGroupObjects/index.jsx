@@ -12,13 +12,11 @@ const UnitsGroupObjects = ({ objects, subToUpdate }) => {
       <FeatureGroup>
         {objects
           .filter(unit => unit.role && unit.role.name === 'Разведчик')
-          .filter(unit => unit.status !== 'LOST')
           .map(({ id }) => (
             <UnitScoutObjectWithData key={id} id={id} />
           ))}
         {objects
           .filter(unit => unit.role && unit.role.name === 'Ударный')
-          .filter(unit => unit.status !== 'LOST')
           .map(({ id }) => (
             <UnitStrikeObjectWithData key={id} id={id} />
           ))}

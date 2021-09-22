@@ -8,6 +8,7 @@ import StateControl from '../StateControl';
 import RefControl from '../RefControl';
 import InputUnitTypeForm from '../InputUnitTypeForm';
 import InputUnitRoleForm from '../InputUnitRoleForm';
+import InputUnitsForm from '../InputUnitsForm';
 import UnitsList from '../UnitsList';
 // import SetLocationPosition from '../SetLocationPosition';
 import GroundTargetsList from '../GroundTargetsList';
@@ -73,12 +74,16 @@ const SimulationControl = ({ position, stylization }) => {
               >
                 <InputUnitRoleForm stylization="control-panel modal-theme" onClose={closeControl} />
               </StateControl>
-              <RefControl
+              <StateControl
                 name={Controls.INPUT_UNITS}
                 label="Добавить БпЛА"
+                active={Controls.INPUT_UNITS === activeControl}
+                onChoose={pushControl}
+                onClose={closeControl}
                 stylization="control"
-                reference="/input/units"
-              />
+              >
+                <InputUnitsForm stylization="control-panel modal-theme" onClose={closeControl} />
+              </StateControl>
               <StateControl
                 name={Controls.SHOW_UNITS_LIST}
                 label="Список БпЛА"

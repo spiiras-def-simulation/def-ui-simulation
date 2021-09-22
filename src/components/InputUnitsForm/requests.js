@@ -1,9 +1,22 @@
 import { gql } from '@apollo/client';
 
-const ADD_COMBAT_UNITS = gql`
-  mutation AddGroundTargets($input: JSON!) {
-    addUnits: addCombatUnitsToMap(input: $input)
+const GET_UNIT_ROLES = gql`
+  query GetUnitRoles {
+    roles: getCombatUnitRoles {
+      id
+      name
+      unitType {
+        id
+        name
+      }
+    }
   }
 `;
 
-export { ADD_COMBAT_UNITS }; // eslint-disable-line
+const ADD_COMBAT_UNITS = gql`
+  mutation AddCombatUnits($input: JSON!) {
+    addUnits: addCombatUnits(input: $input)
+  }
+`;
+
+export { GET_UNIT_ROLES, ADD_COMBAT_UNITS }; // eslint-disable-line

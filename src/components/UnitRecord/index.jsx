@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useQuery } from '@apollo/client';
 
-import PointRecord from '../PointRecord';
+import UnitCoordinatesWithData from '../UnitCoordinatesWithData';
+import UnitTimeLeftWithData from '../UnitTimeLeftWithData';
 
 import { GET_COMBAT_UNIT } from './requests';
 
@@ -23,9 +24,10 @@ const UnitRecord = ({ id, stylization }) => {
 
   if (loading || error) return null;
 
-  const {
-    unit: { status, role, type, altitude, coordinates, timeLeft }
-  } = data;
+  const { unit = null } = data || {};
+  if (!unit) return null;
+
+  const { status, role, type, altitude } = unit;
   return (
     <div className={classNames('unit-record', stylization)}>
       <div className="record-header">
@@ -36,12 +38,12 @@ const UnitRecord = ({ id, stylization }) => {
       <div className="record-descriptor">
         {type && <p className="record-row">{type.name}</p>}
         {altitude && <p className="record-row">Высота {altitude} м</p>}
-        {coordinates && (
-          <p className="record-row">
-            <PointRecord point={coordinates} />
-          </p>
-        )}
-        {timeLeft && <p className="record-row">Заряда ещё на {timeLeft} с</p>}
+        <p className="record-row">
+          <UnitCoordinatesWithData id={id} />
+        </p>
+        <p className="record-row">
+          <UnitTimeLeftWithData id={id} />
+        </p>
       </div>
     </div>
   );

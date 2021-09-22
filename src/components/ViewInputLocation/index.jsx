@@ -4,7 +4,7 @@ import ViewMap from '../ViewMap';
 import ReturnViewControl from '../ReturnViewControl';
 import InputLocationControl from '../InputLocationControl';
 import InputLocationAreas from '../InputLocationAreas';
-// import DateStatus from '../DateStatus';
+import CombatLocations from '../CombatLocations';
 
 import Context from './context';
 import reducer from './reducer';
@@ -18,8 +18,8 @@ const ViewInputLocation = () => {
       <ViewMap>
         <ReturnViewControl position="topleft" stylization="modal-theme" />
         <InputLocationControl position="topleft" stylization="modal-theme" />
-        {/* <DateStatus position="topright" /> */}
         <InputLocationAreas />
+        <CombatLocations />
       </ViewMap>
     </Context.Provider>
   );
